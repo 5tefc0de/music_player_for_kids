@@ -19,19 +19,32 @@ function App() {
 
   function handlePlaying({ position, duration }) {
     const positionMinSec = position,
-      min = Math.floor((positionMinSec / 1000 / 60) << 0),
-      sec = Math.floor("0" + Math.floor((positionMinSec/1000) % 60));
+      pmin = Math.floor((positionMinSec / 1000 / 60) << 0),
+      psec = Math.floor((positionMinSec / 1000) % 60)
 
-    setPosition(min + ':' + ("0"+sec).slice(-2))
-    setDuration(Math.floor(duration / 1000))
+    setPosition(pmin + ':' + ('0' + psec).slice(-2))
+
+    const durationMinSec = duration,
+      dmin = Math.floor((durationMinSec / 1000 / 60) << 0),
+      dsec = Math.floor((durationMinSec / 1000) % 60)
+
+    setDuration(dmin + ':' + ('0' + dsec).slice(-2))
   }
-
 
   return (
     <AppStyled>
       <HeaderStyled>
-        <ButtonStyled onClick={handlePlay}>play</ButtonStyled>
-        <ButtonStyled onClick={handlePause}>pause</ButtonStyled>
+      {playback === 'STOPPED' && (
+          <ButtonStyled onClick={handlePlay}>play</ButtonStyled>
+        )}
+        {playback === 'PLAYING' && (
+          <ButtonStyled onClick={handlePause}>pause</ButtonStyled>
+          
+        )}
+        {playback === 'PAUSE' && (
+          <ButtonStyled onClick={handlePlay}>play</ButtonStyled>
+        )}
+
         <ButtonStyled onClick={handleStop}>stop</ButtonStyled>
         <ButtonStyled>
           {position} / {duration}
