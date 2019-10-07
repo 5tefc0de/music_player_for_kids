@@ -1,48 +1,41 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react'
 import styled from 'styled-components/macro'
-import Sound from "react-sound";
-
-
+import Sound from 'react-sound'
 
 function App() {
-  const [playback, setPlayback] = useState("STOPPED");
+  const [playback, setPlayback] = useState('STOPPED')
   const [position, setPosition] = useState(0)
   const [duration, setDuration] = useState(0)
 
-
-
-
   function handlePlay() {
-    setPlayback("PLAYING")
-    ;
+    setPlayback('PLAYING')
   }
   function handlePause() {
-    setPlayback("PAUSE");
+    setPlayback('PAUSE')
   }
   function handleStop() {
-    setPlayback("STOPPED");
+    setPlayback('STOPPED')
   }
 
-  function handlePlaying({position, duration}) {
-  const positionMinSec = position,
-  min = Math.floor((positionMinSec/1000/60) << 0),
-  sec = Math.floor((positionMinSec/1000) % 60);
-  
-  setPosition(min + ':' + sec);
-    setDuration(Math.floor(duration /1000))
-  }
- 
+  function handlePlaying({ position, duration }) {
+    const positionMinSec = position,
+      min = Math.floor((positionMinSec / 1000 / 60) << 0),
+      sec = Math.floor("0" + Math.floor((positionMinSec/1000) % 60));
 
+    setPosition(min + ':' + ("0"+sec).slice(-2))
+    setDuration(Math.floor(duration / 1000))
+  }
 
 
   return (
     <AppStyled>
-    
       <HeaderStyled>
         <ButtonStyled onClick={handlePlay}>play</ButtonStyled>
         <ButtonStyled onClick={handlePause}>pause</ButtonStyled>
         <ButtonStyled onClick={handleStop}>stop</ButtonStyled>
-        <ButtonStyled>{position} / {duration}</ButtonStyled>
+        <ButtonStyled>
+          {position} / {duration}
+        </ButtonStyled>
 
         {playback && (
           <Sound
@@ -50,16 +43,10 @@ function App() {
             playStatus={playback}
             onPlaying={handlePlaying}
           />
-          
         )}
       </HeaderStyled>
-      
-  
-        
-    
     </AppStyled>
   )
-  
 }
 
 const AppStyled = styled.div`
@@ -74,23 +61,20 @@ const AppStyled = styled.div`
 `
 
 const ButtonStyled = styled.div`
-    display: inline-block;
-    border: none;
-    padding: 1rem 2rem;
-    margin: 0;
-    text-decoration: none;
-    background: #0069ed;
-    color: #ffffff;
-    font-family: sans-serif;
-    font-size: 1rem;
-    cursor: pointer;
-    text-align: center;
+  display: inline-block;
+  border: none;
+  padding: 1rem 2rem;
+  margin: 0;
+  text-decoration: none;
+  background: #0069ed;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
 `
 const HeaderStyled = styled.header`
-    display: block;
-
-
+  display: block;
 `
 
-
-export default App;
+export default App
