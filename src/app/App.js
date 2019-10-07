@@ -34,12 +34,11 @@ function App() {
   return (
     <AppStyled>
       <HeaderStyled>
-      {playback === 'STOPPED' && (
+        {playback === 'STOPPED' && (
           <ButtonStyled onClick={handlePlay}>play</ButtonStyled>
         )}
         {playback === 'PLAYING' && (
           <ButtonStyled onClick={handlePause}>pause</ButtonStyled>
-          
         )}
         {playback === 'PAUSE' && (
           <ButtonStyled onClick={handlePlay}>play</ButtonStyled>
