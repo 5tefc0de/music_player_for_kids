@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import Sound from 'react-sound'
+import songs from '../songs.json'
+import Player from './Player'
+import Playlist from './Playlist'
 
-function App() {
+export default function App() {
   const [playback, setPlayback] = useState('STOPPED')
-  const [position, setPosition] = useState(0)
-  const [duration, setDuration] = useState(0)
+  const [position, setPosition] = useState('0:00')
+  const [duration, setDuration] = useState('0:00')
+  const [currentSong, setCurrentSong] = useState(songs[0])
 
   function handlePlay() {
     setPlayback('PLAYING')
@@ -15,6 +19,7 @@ function App() {
   }
   function handleStop() {
     setPlayback('STOPPED')
+    setPosition('0:00')
   }
 
   function handlePlaying({ position, duration }) {
@@ -31,6 +36,7 @@ function App() {
     setDuration(dmin + ':' + ('0' + dsec).slice(-2))
   }
 
+
   return (
     <AppStyled>
       <HeaderStyled>
@@ -43,7 +49,6 @@ function App() {
         {playback === 'PAUSE' && (
           <ButtonStyled onClick={handlePlay}>play</ButtonStyled>
         )}
-
         <ButtonStyled onClick={handleStop}>stop</ButtonStyled>
         <ButtonStyled>
           {position} / {duration}
@@ -51,11 +56,19 @@ function App() {
 
         {playback && (
           <Sound
-            url="https://archive.org/download/samples2003-11-21.flac16/samples2003-11-21d2t04.mp3"
+            url={currentSong.url}
             playStatus={playback}
             onPlaying={handlePlaying}
           />
         )}
+          <div>{currentSong.title}</div>
+        <PlaylistStyled>
+          <ButtonStyled onClick={() => setCurrentSong(songs[0])}>1</ButtonStyled>
+          <ButtonStyled onClick={() => setCurrentSong(songs[1])}>2</ButtonStyled>
+          <ButtonStyled onClick={() => setCurrentSong(songs[2])}>3</ButtonStyled>
+          <ButtonStyled onClick={() => setCurrentSong(songs[3])}>4</ButtonStyled>
+          <ButtonStyled onClick={() => setCurrentSong(songs[4])}>5</ButtonStyled>
+        </PlaylistStyled>
       </HeaderStyled>
     </AppStyled>
   )
@@ -72,7 +85,7 @@ const AppStyled = styled.div`
   height: 100%;
 `
 
-const ButtonStyled = styled.div`
+const ButtonStyled = styled.button`
   display: inline-block;
   border: none;
   padding: 1rem 2rem;
@@ -88,5 +101,6 @@ const ButtonStyled = styled.div`
 const HeaderStyled = styled.header`
   display: block;
 `
-
-export default App
+const PlaylistStyled = styled.div`
+  margin-top: 1rem;
+`
