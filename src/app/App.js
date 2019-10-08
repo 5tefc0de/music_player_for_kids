@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
-
 import songs from '../songs.json'
 import Player from './Player'
 import Playlist from './Playlist'
@@ -13,24 +12,9 @@ export default function App() {
       <HeaderStyled>
         <Player currentSong={currentSong}></Player>
 
-        <div>{currentSong.title}</div>
-        <PlaylistStyled>
-          <ButtonStyled onClick={() => setCurrentSong(songs[0])}>
-            1
-          </ButtonStyled>
-          <ButtonStyled onClick={() => setCurrentSong(songs[1])}>
-            2
-          </ButtonStyled>
-          <ButtonStyled onClick={() => setCurrentSong(songs[2])}>
-            3
-          </ButtonStyled>
-          <ButtonStyled onClick={() => setCurrentSong(songs[3])}>
-            4
-          </ButtonStyled>
-          <ButtonStyled onClick={() => setCurrentSong(songs[4])}>
-            5
-          </ButtonStyled>
-        </PlaylistStyled>
+        
+        <Playlist setCurrentSong={setCurrentSong} songs={songs}></Playlist>
+
       </HeaderStyled>
     </AppStyled>
   )
@@ -47,6 +31,10 @@ const AppStyled = styled.div`
   height: 100%;
 `
 
+
+const HeaderStyled = styled.header`
+  display: block;
+`
 const ButtonStyled = styled.button`
   display: inline-block;
   border: none;
@@ -59,10 +47,4 @@ const ButtonStyled = styled.button`
   font-size: 1rem;
   cursor: pointer;
   text-align: center;
-`
-const HeaderStyled = styled.header`
-  display: block;
-`
-const PlaylistStyled = styled.div`
-  margin-top: 1rem;
 `

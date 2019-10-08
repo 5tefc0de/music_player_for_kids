@@ -55,6 +55,7 @@ export default function Player({ currentSong }) {
           onPlaying={handlePlaying}
         />
       )}
+      <ButtonStyled>{currentSong.title}</ButtonStyled>
     </Playerstyled>
   )
 }
