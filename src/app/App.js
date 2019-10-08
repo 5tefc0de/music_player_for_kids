@@ -1,73 +1,35 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
-import Sound from 'react-sound'
+
 import songs from '../songs.json'
 import Player from './Player'
 import Playlist from './Playlist'
 
 export default function App() {
-  const [playback, setPlayback] = useState('STOPPED')
-  const [position, setPosition] = useState('0:00')
-  const [duration, setDuration] = useState('0:00')
   const [currentSong, setCurrentSong] = useState(songs[0])
-
-  function handlePlay() {
-    setPlayback('PLAYING')
-  }
-  function handlePause() {
-    setPlayback('PAUSE')
-  }
-  function handleStop() {
-    setPlayback('STOPPED')
-    setPosition('0:00')
-  }
-
-  function handlePlaying({ position, duration }) {
-    const positionMinSec = position,
-      pmin = Math.floor((positionMinSec / 1000 / 60) << 0),
-      psec = Math.floor((positionMinSec / 1000) % 60)
-
-    setPosition(pmin + ':' + ('0' + psec).slice(-2))
-
-    const durationMinSec = duration,
-      dmin = Math.floor((durationMinSec / 1000 / 60) << 0),
-      dsec = Math.floor((durationMinSec / 1000) % 60)
-
-    setDuration(dmin + ':' + ('0' + dsec).slice(-2))
-  }
-
 
   return (
     <AppStyled>
       <HeaderStyled>
-        {playback === 'STOPPED' && (
-          <ButtonStyled onClick={handlePlay}>play</ButtonStyled>
-        )}
-        {playback === 'PLAYING' && (
-          <ButtonStyled onClick={handlePause}>pause</ButtonStyled>
-        )}
-        {playback === 'PAUSE' && (
-          <ButtonStyled onClick={handlePlay}>play</ButtonStyled>
-        )}
-        <ButtonStyled onClick={handleStop}>stop</ButtonStyled>
-        <ButtonStyled>
-          {position} / {duration}
-        </ButtonStyled>
+        <Player currentSong={currentSong}></Player>
 
-        {playback && (
-          <Sound
-            url={currentSong.url}
-            playStatus={playback}
-            onPlaying={handlePlaying}
-          />
-        )}
-          <div>{currentSong.title}</div>
+        <div>{currentSong.title}</div>
         <PlaylistStyled>
-          <ButtonStyled onClick={() => setCurrentSong(songs[0])}>1</ButtonStyled>
-          <ButtonStyled onClick={() => setCurrentSong(songs[1])}>2</ButtonStyled>
-          <ButtonStyled onClick={() => setCurrentSong(songs[2])}>3</ButtonStyled>
-          <ButtonStyled onClick={() => setCurrentSong(songs[3])}>4</ButtonStyled>
-          <ButtonStyled onClick={() => setCurrentSong(songs[4])}>5</ButtonStyled>
+          <ButtonStyled onClick={() => setCurrentSong(songs[0])}>
+            1
+          </ButtonStyled>
+          <ButtonStyled onClick={() => setCurrentSong(songs[1])}>
+            2
+          </ButtonStyled>
+          <ButtonStyled onClick={() => setCurrentSong(songs[2])}>
+            3
+          </ButtonStyled>
+          <ButtonStyled onClick={() => setCurrentSong(songs[3])}>
+            4
+          </ButtonStyled>
+          <ButtonStyled onClick={() => setCurrentSong(songs[4])}>
+            5
+          </ButtonStyled>
         </PlaylistStyled>
       </HeaderStyled>
     </AppStyled>
