@@ -12,7 +12,7 @@ export default function App() {
       <HeaderStyled>
         <Player currentSong={currentSong}></Player>
 
-        <Playlist setCurrentSong={setCurrentSong} songs={songs}></Playlist>
+        <Playlist setCurrentSong={setCurrentSong} songs={[songs[0], songs[1], songs[2], songs[3], songs[4]]}></Playlist>
       </HeaderStyled>
     </AppStyled>
   )
