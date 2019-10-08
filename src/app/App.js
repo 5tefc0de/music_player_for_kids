@@ -12,9 +12,7 @@ export default function App() {
       <HeaderStyled>
         <Player currentSong={currentSong}></Player>
 
-        
         <Playlist setCurrentSong={setCurrentSong} songs={songs}></Playlist>
-
       </HeaderStyled>
     </AppStyled>
   )
@@ -30,7 +28,6 @@ const AppStyled = styled.div`
   bottom: 0;
   height: 100%;
 `
-
 
 const HeaderStyled = styled.header`
   display: block;

@@ -50,7 +50,7 @@ export default function Player({ currentSong }) {
 
       {playback && (
         <Sound
-          url={ currentSong.url }
+          url={currentSong.url}
           playStatus={playback}
           onPlaying={handlePlaying}
         />
