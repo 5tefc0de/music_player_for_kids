@@ -68,7 +68,6 @@ export default function Player({ currentSong }) {
 const Playerstyled = styled.div``
 
 const ButtonStyled = styled.button`
-  display: inline-block;
   border: 2px solid black;
   padding: 1rem 2rem;
   margin: 0;
