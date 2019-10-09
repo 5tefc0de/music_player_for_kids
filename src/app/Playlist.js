@@ -3,15 +3,15 @@ import styled from 'styled-components/macro'
 
 export default function PlayList({ setCurrentSong, songs }) {
   return (
-      <PlaylistStyled>
+    <PlaylistStyled>
       {songs.map((song, index) => (
-          <ButtonStyled key={index} onClick={() => setCurrentSong(song)}>{index} </ButtonStyled>
+        <ButtonStyled key={index} onClick={() => setCurrentSong(song)}>
+          {index + 1}
+        </ButtonStyled>
       ))}
     </PlaylistStyled>
-  )}
-
-
-
+  )
+}
 
 const ButtonStyled = styled.button`
   display: inline-block;

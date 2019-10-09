@@ -3,6 +3,7 @@ import styled from 'styled-components/macro'
 import songs from '../songs.json'
 import Player from './Player'
 import Playlist from './Playlist'
+import SwipeableViews from 'react-swipeable-views';
 
 export default function App() {
   const [currentSong, setCurrentSong] = useState(songs[0])
@@ -11,8 +12,10 @@ export default function App() {
     <AppStyled>
       <HeaderStyled>
         <Player currentSong={currentSong}></Player>
-
-        <Playlist setCurrentSong={setCurrentSong} songs={[songs[0], songs[1], songs[2], songs[3], songs[4]]}></Playlist>
+        <Playlist
+          setCurrentSong={setCurrentSong}
+          songs={[songs[0], songs[1], songs[2], songs[3], songs[4]].splice(0)}
+        ></Playlist>
       </HeaderStyled>
     </AppStyled>
   )
