@@ -49,11 +49,16 @@ export default function Player({ currentSong }) {
       </ButtonStyled>
 
       {playback && (
+          <>
         <Sound
           url={currentSong.url}
           playStatus={playback}
           onPlaying={handlePlaying}
         />
+         <div>
+        <PlaylistImage src={currentSong.image} alt={currentSong.title} />
+        </div>
+        </>
       )}
       <ButtonStyled>{currentSong.title}</ButtonStyled>
     </Playerstyled>
@@ -64,14 +69,18 @@ const Playerstyled = styled.div``
 
 const ButtonStyled = styled.button`
   display: inline-block;
-  border: none;
+  border: 2px solid black;
   padding: 1rem 2rem;
   margin: 0;
   text-decoration: none;
   background: #0069ed;
   color: #ffffff;
-  font-family: sans-serif;
-  font-size: 1rem;
   cursor: pointer;
   text-align: center;
+`
+const PlaylistImage = styled.img`
+  margin-left: 0;
+  margin-right: auto;
+  width: 100px;
+  
 `

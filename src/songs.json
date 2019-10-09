@@ -2,26 +2,32 @@
   {
     "id": "1",
     "url": "https://archive.org/download/calexico2006-12-02..flac16/calexico2006-12-02d1t02.mp3",
-    "title": "Track_1"
+    "title": "Track_1",
+    "image": "https://res.cloudinary.com/dtlbe2w6j/image/upload/v1570628910/images_Elefant_rtpoy4.png"
   },
+
   {
     "id": "2",
     "url": "https://archive.org/download/ra2007-07-21/ra2007-07-21d1t05_64kb.mp3",
-    "title": "Track_2"
+    "title": "Track_2",
+    "image": "https://res.cloudinary.com/dtlbe2w6j/image/upload/v1570628906/images_Katze_xaqj57.png"
   },
   {
     "id": "3",
     "url": "https://archive.org/download/slac2002-02-15/slac2002-02-15d1t07_64kb.mp3",
-    "title": "Track_3"
+    "title": "Track_3",
+    "image": "https://res.cloudinary.com/dtlbe2w6j/image/upload/v1570628905/images_Professor_k8cibj.png"
   },
   {
     "id": "4",
     "url": "https://archive.org/download/blitzentrapper2009-02-24.flac16/blitzentrapper2009-02-24t02_64kb.mp3",
-    "title": "Track_4"
+    "title": "Track_4",
+    "image": "https://res.cloudinary.com/dtlbe2w6j/image/upload/v1570628905/images_Pirat_civgvg.png"
   },
   {
     "id": "5",
     "url": "https://archive.org/download/samples2003-11-21.flac16/samples2003-11-21d2t04.mp3",
-    "title": "Track_5"
+    "title": "Track_5",
+    "image": "https://res.cloudinary.com/dtlbe2w6j/image/upload/v1570628906/images_Vizebuergermeister_xf3ydx.png"
   }
 ]

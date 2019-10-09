@@ -5,27 +5,36 @@ export default function PlayList({ setCurrentSong, songs }) {
   return (
     <PlaylistStyled>
       {songs.map((song, index) => (
+          <>
         <ButtonStyled key={index} onClick={() => setCurrentSong(song)}>
           {index + 1}
         </ButtonStyled>
+        <div>
+        <PlaylistImage src={song.image} alt={song.title} />
+        </div>
+        </>
       ))}
+      
     </PlaylistStyled>
   )
 }
 
+
 const ButtonStyled = styled.button`
-  display: inline-block;
-  border: none;
-  padding: 1rem 2rem;
+  border: 2px solid black;
+  padding: 0.5rem 1rem;
   margin: 0;
-  text-decoration: none;
   background: #0069ed;
   color: #ffffff;
-  font-family: sans-serif;
-  font-size: 1rem;
   cursor: pointer;
-  text-align: center;
 `
 const PlaylistStyled = styled.div`
   margin-top: 1rem;
+`
+
+const PlaylistImage = styled.img`
+  margin-left: 0;
+  margin-right: auto;
+  width: 100px;
+  
 `
