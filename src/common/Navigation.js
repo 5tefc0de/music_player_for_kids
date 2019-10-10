@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Navigation({ buttonTexts, onClick }) {
   return (
-    <nav className="Navigation">
+    <nav>
       {buttonTexts.map((text, index) => (
         <button onClick={() => onClick(index)} key={index}>
           {text}
@@ -11,3 +11,6 @@ export default function Navigation({ buttonTexts, onClick }) {
     </nav>
   )
 }
+
+
+
