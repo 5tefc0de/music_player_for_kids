@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import Sound from 'react-sound'
 
-export default function Player({ currentSong }) {
-  const [playback, setPlayback] = useState('STOPPED')
+export default function Player({ currentSong, playback, setPlayback, activeIndex}) {
+  
   const [position, setPosition] = useState('0:00')
   const [duration, setDuration] = useState('0:00')
 
@@ -31,56 +31,51 @@ export default function Player({ currentSong }) {
 
     setDuration(dmin + ':' + ('0' + dsec).slice(-2))
   }
-
+console.log(activeIndex)
   return (
-    <Playerstyled>
+    <PlayerStyled >
+    {activeIndex !== (0) && (
+    <div>
+    
       {playback === 'STOPPED' && (
-        <ButtonStyled onClick={handlePlay}>play</ButtonStyled>
+        <PlayerButtonStyled onClick={handlePlay}>play</PlayerButtonStyled>
       )}
       {playback === 'PLAYING' && (
-        <ButtonStyled onClick={handlePause}>pause</ButtonStyled>
+        <PlayerButtonStyled onClick={handlePause}>pause</PlayerButtonStyled>
       )}
       {playback === 'PAUSE' && (
-        <ButtonStyled onClick={handlePlay}>play</ButtonStyled>
+        <PlayerButtonStyled onClick={handlePlay}>play</PlayerButtonStyled>
       )}
-      <ButtonStyled onClick={handleStop}>stop</ButtonStyled>
-      <ButtonStyled>
+      <PlayerButtonStyled onClick={handleStop}>stop</PlayerButtonStyled>
+      <PlayerButtonStyled>
         {position} / {duration}
-      </ButtonStyled>
+      </PlayerButtonStyled>
+      <PlayerButtonStyled>{currentSong.title}</PlayerButtonStyled>
 
+      </div>
+      )}
       {playback && (
-          <>
+          
         <Sound
           url={currentSong.url}
           playStatus={playback}
           onPlaying={handlePlaying}
         />
-         <div>
-        <PlaylistImage src={currentSong.image} alt={currentSong.title} />
-        </div>
-        </>
       )}
-      <ButtonStyled>{currentSong.title}</ButtonStyled>
-    </Playerstyled>
+     
+    </PlayerStyled>
   )
 }
 
-const Playerstyled = styled.div``
-
-const ButtonStyled = styled.button`
-  display: inline-block;
+const PlayerStyled = styled.div`
+  position: absolute;
+  top: 250px;
+`
+const PlayerButtonStyled = styled.button`
   border: 2px solid black;
-  padding: 1rem 2rem;
   margin: 0;
   text-decoration: none;
-  background: #0069ed;
-  color: #ffffff;
   cursor: pointer;
   text-align: center;
 `
-const PlaylistImage = styled.img`
-  margin-left: 0;
-  margin-right: auto;
-  width: 100px;
-  
-`
+
