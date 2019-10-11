@@ -11,6 +11,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
+    "react-items-carousel": "^2.7.0",
     "react-scripts": "3.1.2",
     "react-sound": "^1.2.0",
     "react-swipeable-views": "^0.13.3",

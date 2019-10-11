@@ -1,31 +1,38 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components/macro'
+import ItemsCarousel from 'react-items-carousel'
 
 export default function PlayList({ setCurrentSong, songs }) {
-  return (
-    <PlaylistStyled>
-      {songs.map((song, index) => (
-        <button onClick={() => setCurrentSong(song)}>
-        <ImageStyled src={song.image} alt={song.title} key={index} >
-          
-        </ImageStyled>
-        </button>
+  const [activeItemIndex, setActiveItemIndex] = useState(0)
+  const chevronWidth = 40
 
-      ))}
-      
-    </PlaylistStyled>
+  return (
+    <div style={{ padding: `0 ${chevronWidth}px` }}>
+      <ItemsCarousel
+        requestToChangeActive={setActiveItemIndex}
+        activeItemIndex={activeItemIndex}
+        numberOfCards={1}
+        gutter={20}
+        leftChevron={<button>{'<'}</button>}
+        rightChevron={<button>{'>'}</button>}
+        outsideChevron
+        chevronWidth={chevronWidth}
+      >
+        {songs.map((song, index) => (
+          <ImageStyled
+            onClick={() => setCurrentSong(song)}
+            src={song.image}
+            alt={song.title}
+            key={index}
+            type="image"
+          ></ImageStyled>
+        ))}
+      </ItemsCarousel>
+    </div>
   )
 }
 
-
-const ImageStyled = styled.img`
-  margin: 0;
-  padding: 0;
-  height: 60px;
-  margin-left: 0;
-  margin-right: auto;
-  width: 60px;
+const ImageStyled = styled.input`
+  border: 2px solid #000;
+  max-width: 48vw;
 `
-const PlaylistStyled = styled.div`
-`
-

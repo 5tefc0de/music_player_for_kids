@@ -2,8 +2,12 @@ import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import Sound from 'react-sound'
 
-export default function Player({ currentSong, playback, setPlayback, activeIndex}) {
-  
+export default function Player({
+  currentSong,
+  playback,
+  setPlayback,
+  activeIndex
+}) {
   const [position, setPosition] = useState('0:00')
   const [duration, setDuration] = useState('0:00')
 
@@ -31,38 +35,34 @@ export default function Player({ currentSong, playback, setPlayback, activeIndex
 
     setDuration(dmin + ':' + ('0' + dsec).slice(-2))
   }
-console.log(activeIndex)
+  console.log(activeIndex)
   return (
-    <PlayerStyled >
-    {activeIndex !== (0) && (
-    <div>
-    
-      {playback === 'STOPPED' && (
-        <PlayerButtonStyled onClick={handlePlay}>play</PlayerButtonStyled>
-      )}
-      {playback === 'PLAYING' && (
-        <PlayerButtonStyled onClick={handlePause}>pause</PlayerButtonStyled>
-      )}
-      {playback === 'PAUSE' && (
-        <PlayerButtonStyled onClick={handlePlay}>play</PlayerButtonStyled>
-      )}
-      <PlayerButtonStyled onClick={handleStop}>stop</PlayerButtonStyled>
-      <PlayerButtonStyled>
-        {position} / {duration}
-      </PlayerButtonStyled>
-      <PlayerButtonStyled>{currentSong.title}</PlayerButtonStyled>
-
-      </div>
+    <PlayerStyled>
+      {activeIndex !== 0 && (
+        <div>
+          {playback === 'STOPPED' && (
+            <PlayerButtonStyled onClick={handlePlay}>play</PlayerButtonStyled>
+          )}
+          {playback === 'PLAYING' && (
+            <PlayerButtonStyled onClick={handlePause}>pause</PlayerButtonStyled>
+          )}
+          {playback === 'PAUSE' && (
+            <PlayerButtonStyled onClick={handlePlay}>play</PlayerButtonStyled>
+          )}
+          <PlayerButtonStyled onClick={handleStop}>stop</PlayerButtonStyled>
+          <PlayerButtonStyled>
+            {position} / {duration}
+          </PlayerButtonStyled>
+          <PlayerButtonStyled>{currentSong.title}</PlayerButtonStyled>
+        </div>
       )}
       {playback && (
-          
         <Sound
           url={currentSong.url}
           playStatus={playback}
           onPlaying={handlePlaying}
         />
       )}
-     
     </PlayerStyled>
   )
 }
@@ -78,4 +78,3 @@ const PlayerButtonStyled = styled.button`
   cursor: pointer;
   text-align: center;
 `
-
