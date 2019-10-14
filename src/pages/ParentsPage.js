@@ -33,5 +33,4 @@ export default function ParentsPage({
   )
 }
 const ParentsPlayerStyled = styled.div`
-  background-color: deeppink;
 `

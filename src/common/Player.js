@@ -6,7 +6,7 @@ export default function Player({
   currentSong,
   playback,
   setPlayback,
-  activeIndex
+  activePage
 }) {
   const [position, setPosition] = useState('0:00')
   const [duration, setDuration] = useState('0:00')
@@ -35,10 +35,10 @@ export default function Player({
 
     setDuration(dmin + ':' + ('0' + dsec).slice(-2))
   }
-  console.log(activeIndex)
+  console.log(activePage)
   return (
     <PlayerStyled>
-      {activeIndex !== 0 && (
+      {activePage !== 0 && (
         <div>
           {playback === 'STOPPED' && (
             <PlayerButtonStyled onClick={handlePlay}>play</PlayerButtonStyled>
@@ -53,7 +53,7 @@ export default function Player({
           <PlayerButtonStyled>
             {position} / {duration}
           </PlayerButtonStyled>
-          <PlayerButtonStyled>{currentSong.title}</PlayerButtonStyled>
+          <PlayerButtonStyled>{currentSong.id}</PlayerButtonStyled>
         </div>
       )}
       {playback && (
@@ -61,6 +61,7 @@ export default function Player({
           url={currentSong.url}
           playStatus={playback}
           onPlaying={handlePlaying}
+          
         />
       )}
     </PlayerStyled>
@@ -68,7 +69,6 @@ export default function Player({
 }
 
 const PlayerStyled = styled.div`
-  position: absolute;
   top: 250px;
 `
 const PlayerButtonStyled = styled.button`
