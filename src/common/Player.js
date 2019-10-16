@@ -61,7 +61,7 @@ export default function Player({
           url={currentSong.url}
           playStatus={playback}
           onPlaying={handlePlaying}
-          
+          loop
         />
       )}
     </PlayerStyled>
@@ -69,12 +69,21 @@ export default function Player({
 }
 
 const PlayerStyled = styled.div`
-  top: 250px;
+  display: flex;
+  width: 100%;
+  height: 44px;
+  justify-content: flex-end;
+  align-items: flex-start;
+
 `
 const PlayerButtonStyled = styled.button`
-  border: 2px solid black;
-  margin: 0;
-  text-decoration: none;
+  background-color: skyblue;
+  border-radius: 0.3em;
+  font-size: 1rem;
+  line-height: 1.2;
+  padding: 0.25rem 0.5rem;
+  margin: 0.25rem;
   cursor: pointer;
-  text-align: center;
+  color: white;
+  font-style: bold;
 `

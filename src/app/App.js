@@ -14,7 +14,6 @@ export default function App() {
   function renderPage() {
     const pages = {
       0: (
-
         <KidsPage
           playback={playback}
           setPlayback={setPlayback}
@@ -38,28 +37,25 @@ export default function App() {
   }
 
   return (
-      <AppStyled>
-        <Navigation
-            buttonTexts={['Kids', 'Parents']}
-            onClick={setActivePage}
-          ></Navigation>
-          {renderPage()}
-      </AppStyled>
-  
+    <AppStyled>
+      <Navigation
+        buttonTexts={['Kids', 'Parents']}
+        onClick={setActivePage}
+      ></Navigation>
+      {renderPage()}
+    </AppStyled>
   )
 }
 
 const AppStyled = styled.div`
-display: grid;
-grid-template-rows: 30px auto;
-width: 100vw;
-overflow: scroll;
+  display: grid;
+  grid-template-rows: 40px auto;
+  width: 100vw;
+  overflow: scroll;
   height: 100vh;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
-background-color: lightcoral;
+  background-color: lightgray;
 `
-
-
