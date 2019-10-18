@@ -10,7 +10,6 @@ export default function ParentsPage({
   playback,
   setPlayback,
   activeIndex,
-  isSelected,
   onSongClick
 }) {
   return (
@@ -19,10 +18,11 @@ export default function ParentsPage({
         setCurrentSong={setCurrentSong}
         songs={songs}
         onSongClick={onSongClick}
-        isSelected={isSelected}
         currentSong={currentSong}
-      ></ParentsPlaylist>
-   
+      >
+        
+      </ParentsPlaylist>
+
       <ParentsPlayer
         currentSong={currentSong}
         playback={playback}

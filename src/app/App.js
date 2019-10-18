@@ -4,23 +4,30 @@ import tracks from '../tracks.json'
 import KidsPage from '../pages/KidsPage'
 import ParentsPage from '../pages/ParentsPage'
 import Navigation from '../common/Navigation'
-import { getSongs, postSong, patchSong, deleteSong} from '../services'
+import { getSongs, postSong, patchSong, deleteSong } from '../services'
 
 export default function App() {
   const [songs, setSongs] = useState([])
   const [currentSong, setCurrentSong] = useState(tracks[0])
   const [activePage, setActivePage] = useState(1)
   const [playback, setPlayback] = useState('STOPPED')
-  const [isSelected, setIsSelected] = useState(false)
 
   useEffect(() => {
     getSongs().then(setSongs)
   }, [])
 
-console.log(songs)
-
-
   
+
+  function toggleIsSelected(song) {
+    patchSong(song._id, { selected: !song.selected }).then(updatedSong => {
+      const index = songs.findIndex(song => song._id === updatedSong._id)
+      setSongs([
+        ...songs.slice(0, index),
+        { ...song, selected: updatedSong.selected },
+        ...songs.slice(index + 1)
+      ])
+    })
+  }
 
   function renderPage() {
     const pages = {
@@ -41,8 +48,7 @@ console.log(songs)
           currentSong={currentSong}
           setCurrentSong={setCurrentSong}
           songs={songs}
-          isSelected={isSelected}
-          //onSongClick={toogleIsSelected}
+          onSongClick={toggleIsSelected}
         />
       )
     }

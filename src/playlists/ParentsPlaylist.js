@@ -4,21 +4,25 @@ import styled from 'styled-components/macro'
 export default function ParentsPlayList({
   setCurrentSong,
   songs,
-  isSelected,
+  
   onSongClick
-}) {
+  
+}) 
+
+
+{
   return (
     <PlaylistonParentsPageStyled>
-      {songs.map((song, index) => (
+      {songs.map((song) => (
         <PlaylistButtononParentsPage
-          key={index}
-          active={isSelected}
+          key={song._id}
+          active={song.selected}
           onClick={() => onSongClick(song)}
         >
           <input
             onClick={() => setCurrentSong(song)}
             alt={song.title}
-            key={index}
+            key={song._id}
             type="image"
           ></input>
         </PlaylistButtononParentsPage>
