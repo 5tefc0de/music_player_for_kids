@@ -11,7 +11,7 @@ export function patchSong(id, data) {
 }
 
 function fetchSongs({ method = 'GET', id = '', data } = {}) {
-  return fetch('/cards/' + id, {
+  return fetch('/songs/' + id, {
     method,
     body: JSON.stringify(data),
     headers: {

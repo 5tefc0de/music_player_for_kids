@@ -7,28 +7,20 @@ import Navigation from '../common/Navigation'
 import { getSongs, postSong, patchSong, deleteSong} from '../services'
 
 export default function App() {
-  const [songs, setSongs] = useState(tracks)
+  const [songs, setSongs] = useState([])
   const [currentSong, setCurrentSong] = useState(tracks[0])
   const [activePage, setActivePage] = useState(1)
   const [playback, setPlayback] = useState('STOPPED')
   const [isSelected, setIsSelected] = useState(false)
 
   useEffect(() => {
-    setSongs(tracks)
+    getSongs().then(setSongs)
   }, [])
 
-  window.localStorage.setItem('currentSongList', JSON.stringify(songs))
+console.log(songs)
 
 
-
-  function toogleIsSelected() {
-
-  }
-
-  /*
-      for KidsPlaylist:
-    setSongs([...songs.filter(item => item.Selected === true)])
-      */
+  
 
   function renderPage() {
     const pages = {
@@ -50,7 +42,7 @@ export default function App() {
           setCurrentSong={setCurrentSong}
           songs={songs}
           isSelected={isSelected}
-          onSongClick={toogleIsSelected}
+          //onSongClick={toogleIsSelected}
         />
       )
     }
