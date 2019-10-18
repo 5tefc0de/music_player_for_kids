@@ -1,33 +1,31 @@
 import React from 'react'
-import Player from '../common/Player'
-import Playlist from '../common/Playlist'
+import KidsPlayer from '../common/KidsPlayer'
 import styled from 'styled-components/macro'
+import KidsPlayList from '../common/KidsPlaylist'
 
 export default function KidsPage({
   currentSong,
   setCurrentSong,
   songs,
-  playback,
   setPlayback,
-  activePage
+  activePage,
+  setImageInPlaylist
 }) {
   return (
     <>
       <Kidsstyle>
-       
-
-        <Player
+        <KidsPlayer
           currentSong={currentSong}
           playback={'PLAYING'}
           setPlayback={setPlayback}
           activePage={activePage}
-        ></Player>
-
-        <Playlist
+        ></KidsPlayer>
+        <KidsPlayList
+          setImageInPlaylist={setImageInPlaylist}
           setCurrentSong={setCurrentSong}
-          songs={[songs[0], songs[1], songs[2], songs[3], songs[4]]}
+          songs={songs}
           activePage={activePage}
-        ></Playlist>
+        ></KidsPlayList>
       </Kidsstyle>
     </>
   )

@@ -1,9 +1,7 @@
 import React from 'react'
-import Player from '../common/Player'
-import Playlist from '../common/Playlist'
+import ParentsPlayer from '../common/ParentsPlayer'
 import styled from 'styled-components/macro'
-import { relative } from 'path'
-
+import ParentsPlaylist from '../common/ParentsPlaylist'
 
 export default function ParentsPage({
   currentSong,
@@ -11,35 +9,32 @@ export default function ParentsPage({
   songs,
   playback,
   setPlayback,
-  activeIndex
+  activeIndex,
+  isSelected,
+  onSongClick
 }) {
   return (
     <ParentsPlayerStyled>
-      
-      
-  
-    
-      <Playlist
+      <ParentsPlaylist
         setCurrentSong={setCurrentSong}
-        songs={[songs[0], songs[1], songs[2], songs[3], songs[4]]}
-      ></Playlist>
-     
-
-      
-      <Player
-          currentSong={currentSong}
-          playback={playback}
-          setPlayback={setPlayback}
-          activeIndex={activeIndex}
-        ></Player>
-       
+        songs={songs}
+        onSongClick={onSongClick}
+        isSelected={isSelected}
+        currentSong={currentSong}
+      ></ParentsPlaylist>
+   
+      <ParentsPlayer
+        currentSong={currentSong}
+        playback={playback}
+        setPlayback={setPlayback}
+        activeIndex={activeIndex}
+      ></ParentsPlayer>
     </ParentsPlayerStyled>
   )
 }
 
-
 const ParentsPlayerStyled = styled.section`
-display: grid;
+  display: grid;
   width: 100vw;
   height: 95vh;
   left: 0;
@@ -47,7 +42,4 @@ display: grid;
   top: 0;
   bottom: 0;
   background-color: lightgray;
-
-  `
-
- 
+`

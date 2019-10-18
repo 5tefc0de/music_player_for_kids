@@ -2,12 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import Sound from 'react-sound'
 
-export default function Player({
-  currentSong,
-  playback,
-  setPlayback,
-  activePage
-}) {
+export default function ParentsPlayer({ currentSong, playback, setPlayback }) {
   const [position, setPosition] = useState('0:00')
   const [duration, setDuration] = useState('0:00')
 
@@ -35,27 +30,24 @@ export default function Player({
 
     setDuration(dmin + ':' + ('0' + dsec).slice(-2))
   }
-  console.log(activePage)
+
   return (
     <PlayerStyled>
-      {activePage !== 0 && (
-        <div>
-          {playback === 'STOPPED' && (
-            <PlayerButtonStyled onClick={handlePlay}>play</PlayerButtonStyled>
-          )}
-          {playback === 'PLAYING' && (
-            <PlayerButtonStyled onClick={handlePause}>pause</PlayerButtonStyled>
-          )}
-          {playback === 'PAUSE' && (
-            <PlayerButtonStyled onClick={handlePlay}>play</PlayerButtonStyled>
-          )}
-          <PlayerButtonStyled onClick={handleStop}>stop</PlayerButtonStyled>
-          <PlayerButtonStyled>
-            {position} / {duration}
-          </PlayerButtonStyled>
-          <PlayerButtonStyled>{currentSong.id}</PlayerButtonStyled>
-        </div>
+      {playback === 'STOPPED' && (
+        <PlayerButtonStyled onClick={handlePlay}>play</PlayerButtonStyled>
       )}
+      {playback === 'PLAYING' && (
+        <PlayerButtonStyled onClick={handlePause}>pause</PlayerButtonStyled>
+      )}
+      {playback === 'PAUSE' && (
+        <PlayerButtonStyled onClick={handlePlay}>play</PlayerButtonStyled>
+      )}
+      <PlayerButtonStyled onClick={handleStop}>stop</PlayerButtonStyled>
+      <PlayerButtonStyled>
+        {position} / {duration}
+      </PlayerButtonStyled>
+      <PlayerButtonStyled>{currentSong.id}</PlayerButtonStyled>
+
       {playback && (
         <Sound
           url={currentSong.url}
@@ -74,7 +66,6 @@ const PlayerStyled = styled.div`
   height: 44px;
   justify-content: flex-end;
   align-items: flex-start;
-
 `
 const PlayerButtonStyled = styled.button`
   background-color: skyblue;

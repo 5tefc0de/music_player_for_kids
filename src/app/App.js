@@ -1,15 +1,32 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components/macro'
-import songs from '../songs.json'
-
+import tracks from '../tracks.json'
 import KidsPage from '../pages/KidsPage'
 import ParentsPage from '../pages/ParentsPage'
 import Navigation from '../common/Navigation'
 
 export default function App() {
-  const [currentSong, setCurrentSong] = useState(songs[0])
-  const [activePage, setActivePage] = useState(0)
+  const [songs, setSongs] = useState(tracks)
+  const [currentSong, setCurrentSong] = useState(tracks[0])
+  const [activePage, setActivePage] = useState(1)
   const [playback, setPlayback] = useState('STOPPED')
+  const [isSelected, setIsSelected] = useState(false)
+
+  useEffect(() => {
+    setSongs(tracks)
+  }, [])
+
+  console.log(songs)
+
+  function toogleIsSelected(song) {
+    setSongs([
+      ...songs.slice(0, song.id),
+      { ...song, isSelected: !song.isSelected },
+      ...songs.slice(song.id + 1)
+    ])
+  }
+
+
 
   function renderPage() {
     const pages = {
@@ -19,7 +36,7 @@ export default function App() {
           setPlayback={setPlayback}
           currentSong={currentSong}
           setCurrentSong={setCurrentSong}
-          songs={[songs[0], songs[1], songs[2], songs[3], songs[4]]}
+          songs={songs}
           activePage={activePage}
         />
       ),
@@ -29,7 +46,9 @@ export default function App() {
           setPlayback={setPlayback}
           currentSong={currentSong}
           setCurrentSong={setCurrentSong}
-          songs={[songs[0], songs[1], songs[2], songs[3], songs[4]]}
+          songs={songs}
+          isSelected={isSelected}
+          onSongClick={toogleIsSelected}
         />
       )
     }

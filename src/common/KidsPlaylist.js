@@ -2,14 +2,19 @@ import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import ItemsCarousel from 'react-items-carousel'
 
-export default function PlayList({ setCurrentSong, songs, activePage }) {
+export default function KidsPlayList({
+  setCurrentSong,
+  songs,
+
+}) {
   const [activeItemIndex, setActiveItemIndex] = useState(0)
   const chevronWidth = 40
 
+
+
   return (
     <PlaylistStyled style={{ padding: `0 ${chevronWidth}px` }}>
-     
-      {activePage === 0 && (
+      
         <ItemsCarousel
           requestToChangeActive={setActiveItemIndex}
           activeItemIndex={activeItemIndex}
@@ -32,21 +37,8 @@ export default function PlayList({ setCurrentSong, songs, activePage }) {
             ></ImageStyled>
           ))}
         </ItemsCarousel>
-      )}
-      
-      {activePage !== 0 && (
-       <PlaylistonParentsPageStyled>
-          {songs.map((song, index) => (
-            <PlaylistButtononParentsPage
-              onClick={() => setCurrentSong(song)}
-              alt={song.title}
-              key={index}
-              type="image"
-            ></PlaylistButtononParentsPage>
-          ))}
-          </PlaylistonParentsPageStyled>
-       
-      )}
+     
+
     </PlaylistStyled>
   )
 }
@@ -70,28 +62,6 @@ const PlaylistButton = styled.button`
   cursor: pointer;
   color: white;
   font-style: bold;
-`
-
-const PlaylistButtononParentsPage = styled.input`
-  background-color: skyblue;
-  border-radius: 0.3em;
-  font-size: 1em;
-  line-height: 1.2;
-  padding: 0.25rem 0.5rem;
-  margin: 0.25rem;
-  cursor: pointer;
-  color: white;
-  font-style: bold;
-`
-
-const PlaylistonParentsPageStyled = styled.div`
-  display: flex;
-  width: 100vw;
-  height: 85vh;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  margin-top: 1em;
 `
 
 
