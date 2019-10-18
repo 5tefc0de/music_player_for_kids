@@ -4,6 +4,7 @@ import tracks from '../tracks.json'
 import KidsPage from '../pages/KidsPage'
 import ParentsPage from '../pages/ParentsPage'
 import Navigation from '../common/Navigation'
+import { getSongs, postSong, patchSong, deleteSong} from '../services'
 
 export default function App() {
   const [songs, setSongs] = useState(tracks)

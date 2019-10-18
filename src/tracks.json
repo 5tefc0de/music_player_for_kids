@@ -4,7 +4,7 @@
     "url": "https://res.cloudinary.com/dtlbe2w6j/video/upload/v1571236825/songs/oh-du-lieber-augustin_sxngag.mp3",
     "title": "Track_1",
     "image": "https://res.cloudinary.com/dtlbe2w6j/image/upload/v1570628910/images_Elefant_rtpoy4.png",
-    "Selected": false
+    "selected": false
   },
 
   {
@@ -91,20 +91,20 @@
     "url": "",
     "title": "Track_13",
     "image": "",
-    "Selected": false
+    "selected": false
   },
   {
     "id": "14",
     "url": "",
     "title": "Track_14",
     "image": "",
-    "Selected": false
+    "selected": false
   },
   {
     "id": "15",
     "url": "",
     "title": "Track_15",
     "image": "",
-    "Selected": false
+    "selected": false
   }
 ]
