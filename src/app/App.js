@@ -16,17 +16,18 @@ export default function App() {
     setSongs(tracks)
   }, [])
 
-  console.log(songs)
+  window.localStorage.setItem('currentSongList', JSON.stringify(songs))
 
-  function toogleIsSelected(song) {
-    setSongs([
-      ...songs.slice(0, song.id),
-      { ...song, isSelected: !song.isSelected },
-      ...songs.slice(song.id + 1)
-    ])
+
+
+  function toogleIsSelected() {
+
   }
 
-
+  /*
+      for KidsPlaylist:
+    setSongs([...songs.filter(item => item.Selected === true)])
+      */
 
   function renderPage() {
     const pages = {

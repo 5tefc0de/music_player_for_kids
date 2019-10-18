@@ -1,7 +1,7 @@
 import React from 'react'
-import ParentsPlayer from '../common/ParentsPlayer'
+import ParentsPlayer from '../player/ParentsPlayer'
 import styled from 'styled-components/macro'
-import ParentsPlaylist from '../common/ParentsPlaylist'
+import ParentsPlaylist from '../playlists/ParentsPlaylist'
 
 export default function ParentsPage({
   currentSong,

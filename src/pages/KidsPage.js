@@ -1,7 +1,7 @@
 import React from 'react'
-import KidsPlayer from '../common/KidsPlayer'
+import KidsPlayer from '../player/KidsPlayer'
 import styled from 'styled-components/macro'
-import KidsPlayList from '../common/KidsPlaylist'
+import KidsPlayList from '../playlists/KidsPlaylist'
 
 export default function KidsPage({
   currentSong,
