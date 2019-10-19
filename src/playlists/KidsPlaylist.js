@@ -27,7 +27,10 @@ export default function KidsPlayList({
           outsideChevron
           activePosition={'center'}
         >
-          {songs.map((song, index) => (
+
+        
+          {songs.filter(song => song.selected === true )
+          .map((song, index) => (
             <ImageStyled
               onClick={() => setCurrentSong(song)}
               src={song.image}

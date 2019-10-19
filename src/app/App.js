@@ -28,7 +28,7 @@ export default function App() {
       ])
     })
   }
-
+console.log(songs)
   function renderPage() {
     const pages = {
       0: (
