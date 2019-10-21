@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import Sound from 'react-sound'
 
-export default function ParentsPlayer({ currentSong, playback, setPlayback }) {
+export default function ParentsPlayer({ currentSong, playback, setPlayback, songs }) {
   const [position, setPosition] = useState('0:00')
   const [duration, setDuration] = useState('0:00')
 

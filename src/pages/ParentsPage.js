@@ -11,7 +11,9 @@ export default function ParentsPage({
   setPlayback,
   activeIndex,
   onSongClick
-}) {
+}) 
+
+{
   return (
     <ParentsPlayerStyled>
       <ParentsPlaylist

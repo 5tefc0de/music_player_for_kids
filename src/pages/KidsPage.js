@@ -10,7 +10,11 @@ export default function KidsPage({
   setPlayback,
   activePage,
   setImageInPlaylist
-}) {
+}) 
+
+
+{
+  
   return (
     <>
       <Kidsstyle>

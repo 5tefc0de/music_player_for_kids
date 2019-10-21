@@ -10,6 +10,7 @@ export default function ParentsPlayList({
 }) 
 
 
+
 {
   return (
     <PlaylistonParentsPageStyled>
@@ -19,12 +20,15 @@ export default function ParentsPlayList({
           active={song.selected}
           onClick={() => onSongClick(song)}
         >
-          <input
+          <InputOnParentsPlaylistStyled
             onClick={() => setCurrentSong(song)}
-            alt={song.title}
+            alt={song.id}
             key={song._id}
             type="image"
-          ></input>
+            src={song.image}
+          >
+            
+          </InputOnParentsPlaylistStyled>
         </PlaylistButtononParentsPage>
       ))}
     </PlaylistonParentsPageStyled>
@@ -33,22 +37,28 @@ export default function ParentsPlayList({
 
 const PlaylistButtononParentsPage = styled.button`
   background-color: ${props => (props.active ? 'green' : 'skyblue')};
-  border-radius: 0.3em;
+  width: 75px;
+height: 75px;
+  border-radius: 0.5em;
   font-size: 1em;
-  line-height: 1.2;
   padding: 0.25rem 0.5rem;
   margin: 0.25rem;
   cursor: pointer;
   color: white;
   font-style: bold;
+
 `
 
 const PlaylistonParentsPageStyled = styled.div`
   display: flex;
+  flex-wrap: wrap;
   width: 90vw;
   height: 85vh;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  flex-direction: row;
   margin-top: 1em;
+  justify-content: space-between;
+`
+const InputOnParentsPlaylistStyled = styled.input`
+width: 50px;
+height: 50px;
 `

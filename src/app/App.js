@@ -28,7 +28,7 @@ export default function App() {
       ])
     })
   }
-console.log(songs)
+
   function renderPage() {
     const pages = {
       0: (
@@ -48,6 +48,7 @@ console.log(songs)
           currentSong={currentSong}
           setCurrentSong={setCurrentSong}
           songs={songs}
+          //isSelected={isSelected}
           onSongClick={toggleIsSelected}
         />
       )

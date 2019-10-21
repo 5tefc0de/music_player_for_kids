@@ -2,34 +2,26 @@ import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import ItemsCarousel from 'react-items-carousel'
 
-export default function KidsPlayList({
-  setCurrentSong,
-  songs,
-
-}) {
+export default function KidsPlayList({ setCurrentSong, songs }) {
   const [activeItemIndex, setActiveItemIndex] = useState(0)
   const chevronWidth = 40
 
-
-
   return (
     <PlaylistStyled style={{ padding: `0 ${chevronWidth}px` }}>
-      
-        <ItemsCarousel
-          requestToChangeActive={setActiveItemIndex}
-          activeItemIndex={activeItemIndex}
-          numberOfCards={1}
-          gutter={20}
-          leftChevron={<PlaylistButton>{'<'}</PlaylistButton>}
-          rightChevron={<PlaylistButton>{'>'}</PlaylistButton>}
-          alwaysShowChevrons
-          chevronWidth={chevronWidth}
-          outsideChevron
-          activePosition={'center'}
-        >
-
-        
-          {songs.filter(song => song.selected === true )
+      <ItemsCarousel
+        requestToChangeActive={setActiveItemIndex}
+        activeItemIndex={activeItemIndex}
+        numberOfCards={1}
+        gutter={20}
+        leftChevron={<PlaylistButton>{'<'}</PlaylistButton>}
+        rightChevron={<PlaylistButton>{'>'}</PlaylistButton>}
+        alwaysShowChevrons
+        chevronWidth={chevronWidth}
+        outsideChevron
+        activePosition={'center'}
+      >
+        {songs
+          .filter(song => song.selected === true)
           .map((song, index) => (
             <ImageStyled
               onClick={() => setCurrentSong(song)}
@@ -39,9 +31,7 @@ export default function KidsPlayList({
               type="image"
             ></ImageStyled>
           ))}
-        </ItemsCarousel>
-     
-
+      </ItemsCarousel>
     </PlaylistStyled>
   )
 }
@@ -66,5 +56,3 @@ const PlaylistButton = styled.button`
   color: white;
   font-style: bold;
 `
-
-
