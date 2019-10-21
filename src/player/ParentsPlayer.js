@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import Sound from 'react-sound'
 
-export default function Player({ currentSong, playback, setPlayback, activeIndex}) {
-  
+export default function ParentsPlayer({ currentSong, playback, setPlayback, songs }) {
   const [position, setPosition] = useState('0:00')
   const [duration, setDuration] = useState('0:00')
 
@@ -31,12 +30,9 @@ export default function Player({ currentSong, playback, setPlayback, activeIndex
 
     setDuration(dmin + ':' + ('0' + dsec).slice(-2))
   }
-console.log(activeIndex)
+
   return (
-    <PlayerStyled >
-    {activeIndex !== (0) && (
-    <div>
-    
+    <PlayerStyled>
       {playback === 'STOPPED' && (
         <PlayerButtonStyled onClick={handlePlay}>play</PlayerButtonStyled>
       )}
@@ -50,32 +46,35 @@ console.log(activeIndex)
       <PlayerButtonStyled>
         {position} / {duration}
       </PlayerButtonStyled>
-      <PlayerButtonStyled>{currentSong.title}</PlayerButtonStyled>
+      <PlayerButtonStyled>{currentSong.id}</PlayerButtonStyled>
 
-      </div>
-      )}
       {playback && (
-          
         <Sound
           url={currentSong.url}
           playStatus={playback}
           onPlaying={handlePlaying}
+          loop
         />
       )}
-     
     </PlayerStyled>
   )
 }
 
 const PlayerStyled = styled.div`
-  position: absolute;
-  top: 250px;
+  display: flex;
+  width: 100%;
+  height: 44px;
+  justify-content: flex-end;
+  align-items: flex-start;
 `
 const PlayerButtonStyled = styled.button`
-  border: 2px solid black;
-  margin: 0;
-  text-decoration: none;
+  background-color: skyblue;
+  border-radius: 0.3em;
+  font-size: 1rem;
+  line-height: 1.2;
+  padding: 0.25rem 0.5rem;
+  margin: 0.25rem;
   cursor: pointer;
-  text-align: center;
+  color: white;
+  font-style: bold;
 `
-

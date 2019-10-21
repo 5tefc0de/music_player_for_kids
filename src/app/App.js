@@ -1,15 +1,33 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components/macro'
-import songs from '../songs.json'
-
+import tracks from '../tracks.json'
 import KidsPage from '../pages/KidsPage'
 import ParentsPage from '../pages/ParentsPage'
 import Navigation from '../common/Navigation'
+import { getSongs, postSong, patchSong, deleteSong } from '../services'
 
 export default function App() {
-  const [currentSong, setCurrentSong] = useState(songs[0])
-  const [activeIndex, setActiveIndex] = useState(0)
+  const [songs, setSongs] = useState([])
+  const [currentSong, setCurrentSong] = useState(tracks[0])
+  const [activePage, setActivePage] = useState(1)
   const [playback, setPlayback] = useState('STOPPED')
+
+  useEffect(() => {
+    getSongs().then(setSongs)
+  }, [])
+
+  
+
+  function toggleIsSelected(song) {
+    patchSong(song._id, { selected: !song.selected }).then(updatedSong => {
+      const index = songs.findIndex(song => song._id === updatedSong._id)
+      setSongs([
+        ...songs.slice(0, index),
+        { ...song, selected: updatedSong.selected },
+        ...songs.slice(index + 1)
+      ])
+    })
+  }
 
   function renderPage() {
     const pages = {
@@ -19,8 +37,8 @@ export default function App() {
           setPlayback={setPlayback}
           currentSong={currentSong}
           setCurrentSong={setCurrentSong}
-          songs={[songs[0], songs[1], songs[2], songs[3], songs[4]]}
-          activeIndex={activeIndex}
+          songs={songs}
+          activePage={activePage}
         />
       ),
       1: (
@@ -29,45 +47,35 @@ export default function App() {
           setPlayback={setPlayback}
           currentSong={currentSong}
           setCurrentSong={setCurrentSong}
-          songs={[songs[0], songs[1], songs[2], songs[3], songs[4]]}
+          songs={songs}
+          //isSelected={isSelected}
+          onSongClick={toggleIsSelected}
         />
       )
     }
-    return pages[activeIndex]
+    return pages[activePage]
   }
 
   return (
-    <>
-      <AppStyled>
-        <MainStyled>{renderPage()}</MainStyled>
-
-        <FooterStyled>
-          <Navigation
-            buttonTexts={['Kids', 'Parents']}
-            onClick={setActiveIndex}
-          ></Navigation>
-        </FooterStyled>
-      </AppStyled>
-    </>
+    <AppStyled>
+      <Navigation
+        buttonTexts={['Kids', 'Parents']}
+        onClick={setActivePage}
+      ></Navigation>
+      {renderPage()}
+    </AppStyled>
   )
 }
 
 const AppStyled = styled.div`
   display: grid;
+  grid-template-rows: 40px auto;
+  width: 100vw;
+  overflow: scroll;
   height: 100vh;
-  text-align: center;
-  grid-template-rows: auto 30px;
-  overflow-y: scroll;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
-`
-
-const MainStyled = styled.div`
-  overflow-y: scroll;
-`
-const FooterStyled = styled.header`
-  height: 50px;
-  width: 100%;
+  background-color: lightgray;
 `

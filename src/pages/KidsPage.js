@@ -1,38 +1,47 @@
 import React from 'react'
-import Player from '../common/Player'
-import Playlist from '../common/Playlist'
+import KidsPlayer from '../player/KidsPlayer'
 import styled from 'styled-components/macro'
+import KidsPlayList from '../playlists/KidsPlaylist'
 
 export default function KidsPage({
   currentSong,
   setCurrentSong,
   songs,
-  playback,
   setPlayback,
-  activeIndex
-}) {
+  activePage,
+  setImageInPlaylist
+}) 
+
+
+{
+  
   return (
     <>
       <Kidsstyle>
-        <h1>KidsPage</h1>
-        
-        <Player
+        <KidsPlayer
           currentSong={currentSong}
           playback={'PLAYING'}
           setPlayback={setPlayback}
-          activeIndex={activeIndex}
-   
-        ></Player>
-       
-        <Playlist
+          activePage={activePage}
+        ></KidsPlayer>
+        <KidsPlayList
+          setImageInPlaylist={setImageInPlaylist}
           setCurrentSong={setCurrentSong}
-          songs={[songs[0], songs[1], songs[2], songs[3], songs[4]]}
-        ></Playlist>
+          songs={songs}
+          activePage={activePage}
+        ></KidsPlayList>
       </Kidsstyle>
     </>
   )
 }
 
 const Kidsstyle = styled.section`
-  background-color: deeppink;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: url(https://res.cloudinary.com/dtlbe2w6j/image/upload/v1571218638/Bildschirmfoto_2019-10-16_um_11.36.43_euoxbj.png)
+    no-repeat;
+  width: 100vw;
+  margin: 0 auto;
 `
