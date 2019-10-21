@@ -14,11 +14,10 @@ export default function Navigation({ buttonTexts, onClick }) {
 }
 
 const NavStyled = styled.nav`
-height: 30px;
+  height: 30px;
 `
-
-const ButtononNavigationStyled = styled.button `
-  background-color: #D9B48FFF   ;
+const ButtononNavigationStyled = styled.button`
+  background-color: #eba487;
   border-radius: 0.3em;
   font-size: 1rem;
   line-height: 1.2;
@@ -28,5 +27,3 @@ const ButtononNavigationStyled = styled.button `
   color: white;
   font-style: bold;
 `
-
-

@@ -16,8 +16,6 @@ export default function App() {
     getSongs().then(setSongs)
   }, [])
 
-  
-
   function toggleIsSelected(song) {
     patchSong(song._id, { selected: !song.selected }).then(updatedSong => {
       const index = songs.findIndex(song => song._id === updatedSong._id)

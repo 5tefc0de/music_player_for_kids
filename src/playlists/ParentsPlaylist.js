@@ -36,7 +36,7 @@ export default function ParentsPlayList({
 }
 
 const PlaylistButtononParentsPage = styled.button`
-  background-color: ${props => (props.active ? 'green' : 'skyblue')};
+  background-color: ${props => (props.active ? '#eba487' : 'skyblue')};
   width: 75px;
 height: 75px;
   border-radius: 0.5em;

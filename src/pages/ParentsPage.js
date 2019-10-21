@@ -16,6 +16,13 @@ export default function ParentsPage({
 {
   return (
     <ParentsPlayerStyled>
+      <ParentsPlayer
+        currentSong={currentSong}
+        playback={playback}
+        setPlayback={setPlayback}
+        activeIndex={activeIndex}
+      ></ParentsPlayer>
+
       <ParentsPlaylist
         setCurrentSong={setCurrentSong}
         songs={songs}
@@ -25,12 +32,7 @@ export default function ParentsPage({
         
       </ParentsPlaylist>
 
-      <ParentsPlayer
-        currentSong={currentSong}
-        playback={playback}
-        setPlayback={setPlayback}
-        activeIndex={activeIndex}
-      ></ParentsPlayer>
+
     </ParentsPlayerStyled>
   )
 }
