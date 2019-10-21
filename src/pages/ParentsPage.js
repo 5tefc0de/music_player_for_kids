@@ -5,7 +5,6 @@ import ParentsPlaylist from '../playlists/ParentsPlaylist'
 
 export default function ParentsPage({
   currentSong,
-  setCurrentSong,
   songs,
   playback,
   setPlayback,
@@ -24,7 +23,6 @@ export default function ParentsPage({
       ></ParentsPlayer>
 
       <ParentsPlaylist
-        setCurrentSong={setCurrentSong}
         songs={songs}
         onSongClick={onSongClick}
         currentSong={currentSong}

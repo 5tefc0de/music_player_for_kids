@@ -24,6 +24,7 @@ export default function App() {
         { ...song, selected: updatedSong.selected },
         ...songs.slice(index + 1)
       ])
+      setCurrentSong(song)
     })
   }
 
@@ -44,9 +45,7 @@ export default function App() {
           playback={playback}
           setPlayback={setPlayback}
           currentSong={currentSong}
-          setCurrentSong={setCurrentSong}
           songs={songs}
-          //isSelected={isSelected}
           onSongClick={toggleIsSelected}
         />
       )
