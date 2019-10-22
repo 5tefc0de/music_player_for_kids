@@ -46,7 +46,7 @@ const PlaylistStyled = styled.div`
   width: 100vw;
 `
 const PlaylistButton = styled.button`
-  background-color: skyblue;
+  background-color: #39968f;
   border-radius: 0.3em;
   font-size: 2em;
   line-height: 1.2;

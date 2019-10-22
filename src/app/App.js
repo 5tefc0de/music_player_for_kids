@@ -4,6 +4,7 @@ import tracks from '../tracks.json'
 import KidsPage from '../pages/KidsPage'
 import ParentsPage from '../pages/ParentsPage'
 import Navigation from '../common/Navigation'
+
 import { getSongs, postSong, patchSong, deleteSong } from '../services'
 
 export default function App() {
@@ -54,25 +55,36 @@ export default function App() {
   }
 
   return (
+   
     <AppStyled>
-      <Navigation
-        buttonTexts={['Kids', 'Parents']}
+          <NavStyled
+        buttonTexts={['Kinder', 'Eltern']}
         onClick={setActivePage}
-      ></Navigation>
+      ></NavStyled>
       {renderPage()}
     </AppStyled>
   )
 }
 
+const NavStyled = styled(Navigation)`
+margin-left: 100px;
+height: 50px;
+  width: 100%;
+
+`
+
 const AppStyled = styled.div`
   display: grid;
-  grid-template-rows: 40px auto;
+  grid-row-gap: 10px;
   width: 100vw;
-  overflow: scroll;
   height: 100vh;
+  grid-template-rows: 40px auto;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: lightgray;
+  background-color: white;
+  margin-left: 3.5em;
+  margin-top: 0.5em;
+  margin-right: 0.5em;
 `

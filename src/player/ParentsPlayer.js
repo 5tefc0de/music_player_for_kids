@@ -1,6 +1,16 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import Sound from 'react-sound'
+import {Play} from 'styled-icons/boxicons-regular/Play'
+import {Pause} from 'styled-icons/boxicons-regular/Pause'
+import {Stop} from 'styled-icons/boxicons-regular/Stop'
+
+
+
+
+
+
+
 
 export default function ParentsPlayer({ currentSong, playback, setPlayback, songs }) {
   const [position, setPosition] = useState('0:00')
@@ -32,17 +42,20 @@ export default function ParentsPlayer({ currentSong, playback, setPlayback, song
   }
 
   return (
+    
+
     <PlayerStyled>
+
       {playback === 'STOPPED' && (
-        <PlayerButtonStyled onClick={handlePlay}>play</PlayerButtonStyled>
+        <PlayerButtonStyled onClick={handlePlay}><Play size="16" /></PlayerButtonStyled>
       )}
       {playback === 'PLAYING' && (
-        <PlayerButtonStyled onClick={handlePause}>pause</PlayerButtonStyled>
+        <PlayerButtonStyled onClick={handlePause}><Pause size="16" /></PlayerButtonStyled>
       )}
       {playback === 'PAUSE' && (
-        <PlayerButtonStyled onClick={handlePlay}>play</PlayerButtonStyled>
+        <PlayerButtonStyled onClick={handlePlay}><Play size="16" /></PlayerButtonStyled>
       )}
-      <PlayerButtonStyled onClick={handleStop}>stop</PlayerButtonStyled>
+      <PlayerButtonStyled onClick={handleStop}><Stop size="16" /></PlayerButtonStyled>
       <PlayerButtonStyled>
         {position} / {duration}
       </PlayerButtonStyled>
@@ -57,24 +70,29 @@ export default function ParentsPlayer({ currentSong, playback, setPlayback, song
         />
       )}
     </PlayerStyled>
+    
   )
 }
+
+
 
 const PlayerStyled = styled.div`
   display: flex;
   width: 100%;
-  height: 44px;
-  justify-content: flex-end;
-  align-items: flex-start;
+  justify-content: center;
+padding-right: 2em;
+padding-bottom: 0.5em;
+padding-top: 0.9em;
 `
 const PlayerButtonStyled = styled.button`
-  background-color: skyblue;
+  background-color: #ff9393;
   border-radius: 0.3em;
-  font-size: 1rem;
-  line-height: 1.2;
+  font-size: 0.8rem;
   padding: 0.25rem 0.5rem;
-  margin: 0.25rem;
+  margin: 0.10rem;
   cursor: pointer;
-  color: white;
+  color: black;
   font-style: bold;
+  font-family: 'Arial';
+  justify-content: center;
 `
