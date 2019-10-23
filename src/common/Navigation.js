@@ -1,37 +1,25 @@
-import React, {useState} from 'react'
+import React from 'react'
 import styled from 'styled-components/macro'
-import {ArrowLeft} from 'styled-icons/evil/ArrowLeft'
-import {ArrowRight} from 'styled-icons/evil/ArrowRight'
+import { ArrowLeft } from 'styled-icons/evil/ArrowLeft'
+import { ArrowRight } from 'styled-icons/evil/ArrowRight'
 
-
-
-
-export default function Navigation({ buttonTexts, onClick }) {
-
-  const [switchPage, setSwitchPage] = useState (true)
-
-  function handlePageSwitch () {
-    setSwitchPage(!switchPage)
-  }
-
+export default function Navigation({ onClick }) {
   return (
     <NavStyled>
-      
-        <KidsButtononNavigationStyled >
+      <KidsButtononNavigationStyled onClick={() => onClick(0)}>
         <ArrowLeft size="15" /> Kids Player
-        </KidsButtononNavigationStyled>
-        <ParentsButtononNavigationStyled >
-          Player editieren
-        </ParentsButtononNavigationStyled>
-        <SettingsButtononNavigationStyled >
-        Einstellungen <ArrowRight size="15" /> 
-        </SettingsButtononNavigationStyled>
-      
+      </KidsButtononNavigationStyled>
+
+      <ParentsButtononNavigationStyled onClick={() => onClick(1)}>
+        Player editieren
+      </ParentsButtononNavigationStyled>
+
+      <SettingsButtononNavigationStyled onClick={() => onClick(2)}>
+        Einstellungen <ArrowRight size="15" />
+      </SettingsButtononNavigationStyled>
     </NavStyled>
   )
 }
-
-
 
 const NavStyled = styled.nav`
   display: grid;
@@ -45,13 +33,11 @@ const KidsButtononNavigationStyled = styled.button`
   background-color: #7edad4;
   border-radius: 0.3em;
   font-size: 0.7em;
-padding-left:0;
+  padding-left: 0;
   font-family: 'Arial';
-color: white;
+  color: white;
   cursor: pointer;
-
   font-style: bold;
-
 `
 const ParentsButtononNavigationStyled = styled.button`
   background-color: #39968f;
@@ -59,21 +45,20 @@ const ParentsButtononNavigationStyled = styled.button`
   font-size: 0.7em;
   padding: 0;
   font-family: 'Arial';
-color: white;
+  color: white;
   cursor: pointer;
 
   font-style: bold;
-
 `
 const SettingsButtononNavigationStyled = styled.button`
   background-color: #7edad4;
   border-radius: 0.3em;
   font-size: 0.7em;
-padding-right: 10px;;
+  padding-right: 10px;
   font-family: 'Arial';
-color: white;
+  color: white;
   cursor: pointer;
   padding: 0;
   font-style: bold;
-padding-left: 1px;
+  padding-left: 1px;
 `

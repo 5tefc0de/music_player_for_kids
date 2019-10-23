@@ -4,13 +4,13 @@ import tracks from '../tracks.json'
 import KidsPage from '../pages/KidsPage'
 import ParentsPage from '../pages/ParentsPage'
 import Navigation from '../common/Navigation'
-
+import SettingsPage from '../pages/SettingsPage'
 import { getSongs, postSong, patchSong, deleteSong } from '../services'
 
 export default function App() {
   const [songs, setSongs] = useState([])
   const [currentSong, setCurrentSong] = useState(tracks[0])
-  const [activePage, setActivePage] = useState(1)
+  const [activePage, setActivePage] = useState(2)
   const [playback, setPlayback] = useState('STOPPED')
 
   useEffect(() => {
@@ -49,29 +49,21 @@ export default function App() {
           songs={songs}
           onSongClick={toggleIsSelected}
         />
-      )
+      ),
+      2: (<SettingsPage />)
     }
     return pages[activePage]
   }
 
   return (
-   
     <AppStyled>
-          <NavStyled
-        buttonTexts={['Kinder', 'Eltern']}
-        onClick={setActivePage}
-      ></NavStyled>
+      <Navigation onClick={setActivePage}></Navigation>
       {renderPage()}
     </AppStyled>
   )
 }
 
-const NavStyled = styled(Navigation)`
-margin-left: 100px;
-height: 50px;
-  width: 100%;
 
-`
 
 const AppStyled = styled.div`
   display: grid;
@@ -83,8 +75,4 @@ const AppStyled = styled.div`
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: white;
-  margin-left: 3.5em;
-  margin-top: 0.5em;
-  margin-right: 0.5em;
 `
