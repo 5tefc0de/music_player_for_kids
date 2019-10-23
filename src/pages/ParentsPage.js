@@ -5,39 +5,29 @@ import ParentsPlaylist from '../playlists/ParentsPlaylist'
 
 export default function ParentsPage({
   currentSong,
-  setCurrentSong,
   songs,
   playback,
   setPlayback,
-  activeIndex,
   onSongClick
-}) 
-
-{
+}) {
   return (
-    <ParentsPlayerStyled>
+    <ParentsPageStyled>
       <ParentsPlayer
         currentSong={currentSong}
         playback={playback}
         setPlayback={setPlayback}
-        activeIndex={activeIndex}
       ></ParentsPlayer>
 
       <ParentsPlaylist
-        setCurrentSong={setCurrentSong}
         songs={songs}
         onSongClick={onSongClick}
         currentSong={currentSong}
-      >
-        
-      </ParentsPlaylist>
-
-
-    </ParentsPlayerStyled>
+      ></ParentsPlaylist>
+    </ParentsPageStyled>
   )
 }
 
-const ParentsPlayerStyled = styled.section`
+const ParentsPageStyled = styled.section`
   display: grid;
   width: 100vw;
   height: 95vh;
@@ -45,5 +35,5 @@ const ParentsPlayerStyled = styled.section`
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: lightgray;
+  background-color: white;
 `

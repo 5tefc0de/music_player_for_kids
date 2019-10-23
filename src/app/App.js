@@ -4,12 +4,13 @@ import tracks from '../tracks.json'
 import KidsPage from '../pages/KidsPage'
 import ParentsPage from '../pages/ParentsPage'
 import Navigation from '../common/Navigation'
+import SettingsPage from '../pages/SettingsPage'
 import { getSongs, postSong, patchSong, deleteSong } from '../services'
 
 export default function App() {
   const [songs, setSongs] = useState([])
   const [currentSong, setCurrentSong] = useState(tracks[0])
-  const [activePage, setActivePage] = useState(1)
+  const [activePage, setActivePage] = useState(2)
   const [playback, setPlayback] = useState('STOPPED')
 
   useEffect(() => {
@@ -24,6 +25,7 @@ export default function App() {
         { ...song, selected: updatedSong.selected },
         ...songs.slice(index + 1)
       ])
+      setCurrentSong(song)
     })
   }
 
@@ -44,36 +46,33 @@ export default function App() {
           playback={playback}
           setPlayback={setPlayback}
           currentSong={currentSong}
-          setCurrentSong={setCurrentSong}
           songs={songs}
-          //isSelected={isSelected}
           onSongClick={toggleIsSelected}
         />
-      )
+      ),
+      2: (<SettingsPage />)
     }
     return pages[activePage]
   }
 
   return (
     <AppStyled>
-      <Navigation
-        buttonTexts={['Kids', 'Parents']}
-        onClick={setActivePage}
-      ></Navigation>
+      <Navigation onClick={setActivePage}></Navigation>
       {renderPage()}
     </AppStyled>
   )
 }
 
+
+
 const AppStyled = styled.div`
   display: grid;
-  grid-template-rows: 40px auto;
+  grid-row-gap: 10px;
   width: 100vw;
-  overflow: scroll;
   height: 100vh;
+  grid-template-rows: 40px auto;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: lightgray;
 `

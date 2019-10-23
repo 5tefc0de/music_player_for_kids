@@ -1,52 +1,48 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 
-export default function ParentsPlayList({
-  setCurrentSong,
-  songs,
-  
-  onSongClick
-  
-}) 
-
-
-
-{
+export default function ParentsPlayList({ songs, onSongClick }) {
   return (
+    
     <PlaylistonParentsPageStyled>
-      {songs.map((song) => (
+      {songs.map(song => (
         <PlaylistButtononParentsPage
           key={song._id}
           active={song.selected}
           onClick={() => onSongClick(song)}
         >
           <InputOnParentsPlaylistStyled
-            onClick={() => setCurrentSong(song)}
-            alt={song.id}
+            src={song.image}
+            alt="no image"
             key={song._id}
             type="image"
-            src={song.image}
-          >
-            
-          </InputOnParentsPlaylistStyled>
+          ></InputOnParentsPlaylistStyled>
+          {song.title}
         </PlaylistButtononParentsPage>
       ))}
     </PlaylistonParentsPageStyled>
+ 
   )
 }
 
-const PlaylistButtononParentsPage = styled.button`
-  background-color: ${props => (props.active ? '#eba487' : 'skyblue')};
-  width: 75px;
-height: 75px;
-  border-radius: 0.5em;
-  font-size: 1em;
-  padding: 0.25rem 0.5rem;
-  margin: 0.25rem;
-  cursor: pointer;
-  color: white;
-  font-style: bold;
 
+
+const PlaylistButtononParentsPage = styled.button`
+  display: flex;
+  background-color: ${props => (props.active ? '#ff9393' : 'lightgrey')};
+  width: 300px;
+  height: 55px;
+  border-radius: 0.9em;
+  font-size: 0.7em;
+  cursor: pointer;
+  color: black;
+  font-style: bold;
+  font-family: 'Arial';
+  margin-bottom: 0.5em;
+  align-items: center;
+  justify-content: left;
+  box-shadow: 1px 3px lightgray;
+  text-decoration: none;
 `
 
 const PlaylistonParentsPageStyled = styled.div`
@@ -55,10 +51,14 @@ const PlaylistonParentsPageStyled = styled.div`
   width: 90vw;
   height: 85vh;
   flex-direction: row;
-  margin-top: 1em;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+
+  overflow: scroll;
 `
 const InputOnParentsPlaylistStyled = styled.input`
-width: 50px;
-height: 50px;
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  margin-right: 2.8em;
 `
