@@ -3,18 +3,22 @@ import styled from 'styled-components/macro'
 import { ArrowLeft } from 'styled-icons/evil/ArrowLeft'
 import { ArrowRight } from 'styled-icons/evil/ArrowRight'
 
-export default function Navigation({ onClick }) {
+import { NavLink } from 'react-router-dom'
+
+export default function Navigation() {
   return (
     <NavStyled>
-      <KidsButtononNavigationStyled onClick={() => onClick(0)}>
-        <ArrowLeft size="15" /> Kids Player
-      </KidsButtononNavigationStyled>
+    
+        <KidsButtononNavigationStyled to="/" >
+          <ArrowLeft size="15" /> Kids Player
+        </KidsButtononNavigationStyled>
+      
 
-      <ParentsButtononNavigationStyled onClick={() => onClick(1)}>
+      <ParentsButtononNavigationStyled to="/parentspage" >
         Player editieren
       </ParentsButtononNavigationStyled>
 
-      <SettingsButtononNavigationStyled onClick={() => onClick(2)}>
+      <SettingsButtononNavigationStyled to="/settingspage" >
         Einstellungen <ArrowRight size="15" />
       </SettingsButtononNavigationStyled>
     </NavStyled>
@@ -29,7 +33,7 @@ const NavStyled = styled.nav`
   margin-top: 0.3em;
   margin-right: 4.3em;
 `
-const KidsButtononNavigationStyled = styled.button`
+const KidsButtononNavigationStyled = styled(NavLink)`
   background-color: #7edad4;
   border-radius: 0.3em;
   font-size: 0.7em;
@@ -39,7 +43,7 @@ const KidsButtononNavigationStyled = styled.button`
   cursor: pointer;
   font-style: bold;
 `
-const ParentsButtononNavigationStyled = styled.button`
+const ParentsButtononNavigationStyled = styled(NavLink)`
   background-color: #39968f;
   border-radius: 0.3em;
   font-size: 0.7em;
@@ -50,7 +54,7 @@ const ParentsButtononNavigationStyled = styled.button`
 
   font-style: bold;
 `
-const SettingsButtononNavigationStyled = styled.button`
+const SettingsButtononNavigationStyled = styled(NavLink)`
   background-color: #7edad4;
   border-radius: 0.3em;
   font-size: 0.7em;

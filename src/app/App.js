@@ -7,10 +7,11 @@ import Navigation from '../common/Navigation'
 import SettingsPage from '../pages/SettingsPage'
 import { getSongs, postSong, patchSong, deleteSong } from '../services'
 
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+
 export default function App() {
   const [songs, setSongs] = useState([])
   const [currentSong, setCurrentSong] = useState(tracks[0])
-  const [activePage, setActivePage] = useState(2)
   const [playback, setPlayback] = useState('STOPPED')
 
   useEffect(() => {
@@ -29,41 +30,43 @@ export default function App() {
     })
   }
 
-  function renderPage() {
-    const pages = {
-      0: (
-        <KidsPage
-          playback={playback}
-          setPlayback={setPlayback}
-          currentSong={currentSong}
-          setCurrentSong={setCurrentSong}
-          songs={songs}
-          activePage={activePage}
-        />
-      ),
-      1: (
-        <ParentsPage
-          playback={playback}
-          setPlayback={setPlayback}
-          currentSong={currentSong}
-          songs={songs}
-          onSongClick={toggleIsSelected}
-        />
-      ),
-      2: (<SettingsPage />)
-    }
-    return pages[activePage]
-  }
-
   return (
-    <AppStyled>
-      <Navigation onClick={setActivePage}></Navigation>
-      {renderPage()}
-    </AppStyled>
+    <Router>
+      <AppStyled>
+        <Navigation ></Navigation>
+
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <KidsPage
+                playback={playback}
+                setPlayback={setPlayback}
+                currentSong={currentSong}
+                setCurrentSong={setCurrentSong}
+                songs={songs}
+              />
+            )}
+          />
+          <Route
+            path="/parentspage"
+            render={() => (
+              <ParentsPage
+                playback={playback}
+                setPlayback={setPlayback}
+                currentSong={currentSong}
+                songs={songs}
+                onSongClick={toggleIsSelected}
+              />
+            )}
+          />
+          <Route path="/settingspage" render={() => <SettingsPage />} />
+        </Switch>
+      </AppStyled>
+    </Router>
   )
 }
-
-
 
 const AppStyled = styled.div`
   display: grid;

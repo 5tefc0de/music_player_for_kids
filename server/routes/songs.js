@@ -30,5 +30,22 @@ router.delete('/:id', (req, res) => {
     .then(song => res.json(song))
     .catch(err => res.json(err))
 })
+/*
+router.post('/', async (req, res) => {
+  const artist = req.body.artist
+  //let previewUrl = artistPreviews[artist]
+  //if (!previewUrl) {
+    //const artist_query = artist.replace(' ', '+').toLowerCase()
+    //previewUrl = await getSongPreview(artist_query)
+   // artistPreviews[artist] = previewUrl
+  //}
+  const artist_query = artist.replace(" ", "+").toLowerCase();
+  const previewUrl = await getSongPreview(artist_query);
+  const data = {...req.body, previewUrl}
+  Song.create(data)
+    .then(song => res.json(song))
+    .catch(err => res.json(err))
+})
+*/
 
 module.exports = router

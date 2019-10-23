@@ -1,6 +1,11 @@
 import React from 'react'
 import styled from 'styled-components/macro'
+import PropTypes from 'prop-types'
 
+ParentsPlayList.propTypes = {
+  songs: PropTypes.array.isRequired,
+  onSongClick: PropTypes.func,
+}
 export default function ParentsPlayList({ songs, onSongClick }) {
   return (
     
