@@ -1,32 +1,56 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components/macro'
-import Countdown from 'react-countdown-now';
 
-export default function SettingsPage() {
-  
-    const Completionist = () => <span>You are good to go!</span>;
+export default function Timer () {
+  const [seconds, setSeconds] = useState(10)
+  const [isActive, setIsActive] = useState(false)
+
+  function toggle() {
+    setIsActive(!isActive)
+  }
+
+  function reset() {
+    setSeconds(10)
+    setIsActive(false)
+  }
+
+  useEffect(() => {
+    let interval = null
+    if (isActive) {
+      interval = setInterval(() => {
+        setSeconds(seconds => seconds - 1)
+      }, 1000)
+    } else if (!isActive && seconds !== 0) {
+      clearInterval(interval)
+    }
+    return () => clearInterval(interval)
+  }, [isActive, seconds])
+/*
+  setTimeout(() => {
+    console.log('Hello, World!')
+  }, 3000);
+*/
 
 
-    const renderer = ({ hours, minutes, seconds, completed }) => {
-        if (!completed) {
-          // Render a complete state
-          return <span>{hours}:{minutes}:{seconds}</span>;
-        } else {
-          // Render a countdown
-          return <Completionist />;
-        }
-      };
-      
-  
-    return (
-  <Countdown
-  date={Date.now() + 10000}
-  intervalDelay={0}
-  precision={3}
-  renderer={renderer}
-  autoStart={false}
- 
-/>
-
-)
+  return (
+    <div className="app">
+      <div className="time">{seconds}s</div>
+      <div className="row">
+        <button
+          className={`button button-primary button-primary-
+          ${
+            isActive ? 'active' : 'inactive'
+          }`}
+          onClick={toggle}
+        >
+          {isActive ? 'Pause' : 'Start'}
+        </button>
+        <button className="button" onClick={reset}>
+          Reset
+        </button>
+      </div>
+    </div>
+  )
 }
+
+

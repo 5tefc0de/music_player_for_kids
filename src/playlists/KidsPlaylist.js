@@ -11,7 +11,6 @@ export default function KidsPlayList({ setCurrentSong, songs }) {
   const [activeItemIndex, setActiveItemIndex] = useState(0)
   const chevronWidth = 40
 
-console.log('SONGS', songs)
 
   return (
     <PlaylistStyled style={{ padding: `0 ${chevronWidth}px` }}>

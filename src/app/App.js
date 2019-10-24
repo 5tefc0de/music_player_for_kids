@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components/macro'
-import tracks from '../tracks.json'
 import KidsPage from '../pages/KidsPage'
 import ParentsPage from '../pages/ParentsPage'
 import Navigation from '../common/Navigation'
@@ -11,8 +10,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 export default function App() {
   const [songs, setSongs] = useState([])
-  const [currentSong, setCurrentSong] = useState(tracks[0])
   const [playback, setPlayback] = useState('STOPPED')
+  const [currentSong, setCurrentSong] = useState([])
 
   useEffect(() => {
     getSongs().then(setSongs)
