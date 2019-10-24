@@ -1,10 +1,16 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import ItemsCarousel from 'react-items-carousel'
+import PropTypes from 'prop-types'
 
+KidsPlayList.propTypes = {
+  setCurrentSong: PropTypes.object.isRequired,
+  songs: PropTypes.array.isRequired,
+}
 export default function KidsPlayList({ setCurrentSong, songs }) {
   const [activeItemIndex, setActiveItemIndex] = useState(0)
   const chevronWidth = 40
+
 
   return (
     <PlaylistStyled style={{ padding: `0 ${chevronWidth}px` }}>

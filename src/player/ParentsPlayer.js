@@ -4,6 +4,14 @@ import Sound from 'react-sound'
 import { Play } from 'styled-icons/boxicons-regular/Play'
 import { Pause } from 'styled-icons/boxicons-regular/Pause'
 import { Stop } from 'styled-icons/boxicons-regular/Stop'
+import PropTypes from 'prop-types'
+
+ParentsPlayer.propTypes = {
+  currentSong: PropTypes.object.isRequired,
+  playback: PropTypes.string.isRequired,
+  setPlaybak: PropTypes.func.isRequired,
+}
+
 
 export default function ParentsPlayer({
   currentSong,
@@ -61,7 +69,7 @@ export default function ParentsPlayer({
       <PlayerButtonStyled>
         {position} / {duration}
       </PlayerButtonStyled>
-      <PlayerButtonStyled>{currentSong.id}</PlayerButtonStyled>
+      <PlayerButtonStyled>{currentSong.title}</PlayerButtonStyled>
 
       {playback && (
         <Sound

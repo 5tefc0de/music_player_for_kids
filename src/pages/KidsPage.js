@@ -17,7 +17,6 @@ export default function KidsPage({
         <KidsPlayer
           currentSong={currentSong}
           playback={'PLAYING'}
-          setPlayback={setPlayback}
           activePage={activePage}
         ></KidsPlayer>
         <KidsPlayList
