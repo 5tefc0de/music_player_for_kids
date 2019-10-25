@@ -7,9 +7,9 @@ import { Stop } from 'styled-icons/boxicons-regular/Stop'
 import PropTypes from 'prop-types'
 
 ParentsPlayer.propTypes = {
-  currentSong: PropTypes.object.isRequired,
+  currentSong: PropTypes.array,
   playback: PropTypes.string.isRequired,
-  setPlaybak: PropTypes.func.isRequired,
+  setPlaybak: PropTypes.func
 }
 
 
@@ -50,21 +50,21 @@ export default function ParentsPlayer({
     <PlayerStyled>
       {playback === 'STOPPED' && (
         <PlayerButtonStyled onClick={handlePlay}>
-          <Play size="16" />
+          <Play size="20" />
         </PlayerButtonStyled>
       )}
       {playback === 'PLAYING' && (
         <PlayerButtonStyled onClick={handlePause}>
-          <Pause size="16" />
+          <Pause size="120" />
         </PlayerButtonStyled>
       )}
       {playback === 'PAUSE' && (
         <PlayerButtonStyled onClick={handlePlay}>
-          <Play size="16" />
+          <Play size="20" />
         </PlayerButtonStyled>
       )}
       <PlayerButtonStyled onClick={handleStop}>
-        <Stop size="16" />
+        <Stop size="20" />
       </PlayerButtonStyled>
       <PlayerButtonStyled>
         {position} / {duration}
@@ -85,21 +85,16 @@ export default function ParentsPlayer({
 
 const PlayerStyled = styled.div`
   display: flex;
-  width: 100%;
   justify-content: center;
-  padding-right: 2em;
   padding-bottom: 0.5em;
   padding-top: 0.9em;
 `
 const PlayerButtonStyled = styled.button`
   background-color: #ff9393;
   border-radius: 0.3em;
-  font-size: 0.8rem;
-  padding: 0.25rem 0.5rem;
-  margin: 0.1rem;
-  cursor: pointer;
+  font-size: 0.8em;
+  padding: 0.25em 0.5em;
+  margin: 0.1em;
   color: black;
-  font-style: bold;
-  font-family: 'Arial';
   justify-content: center;
 `

@@ -4,16 +4,14 @@ import ItemsCarousel from 'react-items-carousel'
 import PropTypes from 'prop-types'
 
 KidsPlayList.propTypes = {
-  setCurrentSong: PropTypes.object.isRequired,
+  setCurrentSong: PropTypes.func,
   songs: PropTypes.array.isRequired,
 }
 export default function KidsPlayList({ setCurrentSong, songs }) {
   const [activeItemIndex, setActiveItemIndex] = useState(0)
-  const chevronWidth = 40
-
 
   return (
-    <PlaylistStyled style={{ padding: `0 ${chevronWidth}px` }}>
+    <PlaylistStyled>
       <ItemsCarousel
         requestToChangeActive={setActiveItemIndex}
         activeItemIndex={activeItemIndex}
@@ -22,7 +20,7 @@ export default function KidsPlayList({ setCurrentSong, songs }) {
         leftChevron={<PlaylistButton>{'<'}</PlaylistButton>}
         rightChevron={<PlaylistButton>{'>'}</PlaylistButton>}
         alwaysShowChevrons
-        chevronWidth={chevronWidth}
+        chevronWidth={40}
         outsideChevron
         activePosition={'center'}
       >
@@ -42,23 +40,22 @@ export default function KidsPlayList({ setCurrentSong, songs }) {
   )
 }
 
-const ImageStyled = styled.input`
-  position: relative;
-  left: 13px;
-  width: 90%;
-  border-radius: 0.5em;
-`
+
 const PlaylistStyled = styled.div`
-  width: 100vw;
+  width: 20em;
+  padding: 0 2.8em;
 `
 const PlaylistButton = styled.button`
   background-color: #39968f;
   border-radius: 0.3em;
   font-size: 2em;
-  line-height: 1.2;
-  padding: 0.25rem 0.5rem;
-  margin: 0.25rem;
-  cursor: pointer;
+  padding: 0.25em 0.5em;
+  margin: 0.25em;
   color: white;
-  font-style: bold;
+`
+const ImageStyled = styled.input`
+  position: relative;
+  left: 0.7em;
+  width: 90%;
+  border-radius: 0.5em;
 `

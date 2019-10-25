@@ -37,6 +37,7 @@ const Kidsstyle = styled.section`
   flex-direction: column;
   background: url(https://res.cloudinary.com/dtlbe2w6j/image/upload/v1571218638/Bildschirmfoto_2019-10-16_um_11.36.43_euoxbj.png)
     no-repeat;
-  width: 100vw;
+  width: 100%;
+  
   margin: 0 auto;
 `

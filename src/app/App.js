@@ -32,8 +32,7 @@ export default function App() {
   return (
     <Router>
       <AppStyled>
-        <Navigation ></Navigation>
-
+        <Navigation />
         <Switch>
           <Route
             exact
@@ -69,12 +68,23 @@ export default function App() {
 
 const AppStyled = styled.div`
   display: grid;
-  grid-row-gap: 10px;
   width: 100vw;
   height: 100vh;
-  grid-template-rows: 40px auto;
+  grid-template-rows: 2.6em auto;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
+
+  @media (min-width: 900px) {
+     width: 375px;
+     height: 667px;
+     border: 30px solid black;
+     border-width: 60px 20px;
+     border-radius: 20px;
+     box-shadow: 30px 40px 30px #2264;
+     margin: 40px auto;
+   }
+
+
 `
