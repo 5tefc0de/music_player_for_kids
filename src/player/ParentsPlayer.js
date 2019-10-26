@@ -69,7 +69,8 @@ export default function ParentsPlayer({
       <PlayerButtonStyled>
         {position} / {duration}
       </PlayerButtonStyled>
-      <PlayerButtonStyled>{currentSong.title}</PlayerButtonStyled>
+      {currentSong.title && <PlayerButtonStyled>{currentSong.title}</PlayerButtonStyled>}
+      
 
       {playback && (
         <Sound

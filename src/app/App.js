@@ -68,9 +68,8 @@ export default function App() {
 
 const AppStyled = styled.div`
   display: grid;
-  width: 100vw;
-  height: 100vh;
-  grid-template-rows: 2.6em auto;
+  grid-template-rows: min-content auto;
+  position: absolute;
   left: 0;
   right: 0;
   top: 0;

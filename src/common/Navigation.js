@@ -40,6 +40,7 @@ const NavStyled = styled.nav`
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 0.2em;
   margin: 0.3rem;
+  height: 48px;
 `
 const KidsButtononNavigationStyled = styled(NavLink)`
   background: url(https://res.cloudinary.com/dtlbe2w6j/image/upload/v1571992078/child-solid_bhihq6.svg)

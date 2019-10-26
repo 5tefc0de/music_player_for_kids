@@ -1,3 +1,4 @@
+/*
 const requestLib = require('request')
 const { REACT_APP_CLIENT_ID, REACT_APP_CLIENT_SECRET } = require('./config.js')
 const client_id = REACT_APP_CLIENT_ID;
@@ -77,3 +78,5 @@ async function getPreviewUrl(token, artistID) {
 }
 
 module.exports = {getSongPreview}; 
+
+*/

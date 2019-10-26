@@ -19,7 +19,7 @@ function fetchSongs({ method = 'GET', id = '', data } = {}) {
     },
   }).then(res => res.json())
 }
-
+/*
 export function fetchAuthorization() {
   return fetch("https://accounts.spotify.com/authorize");
 }
@@ -34,3 +34,4 @@ export function fetchSpotify(data) {
     }
   });
 }
+*/
