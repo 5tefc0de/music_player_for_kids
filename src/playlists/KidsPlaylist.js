@@ -46,7 +46,7 @@ const PlaylistStyled = styled.div`
   padding: 0 2.8em;
 `
 const PlaylistButton = styled.button`
-  background-color: #39968f;
+  background-color: #ff9393;
   border-radius: 0.3em;
   font-size: 2em;
   padding: 0.25em 0.5em;

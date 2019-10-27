@@ -3,7 +3,7 @@ import styled from 'styled-components/macro'
 import KidsPage from '../pages/KidsPage'
 import ParentsPage from '../pages/ParentsPage'
 import Navigation from '../common/Navigation'
-import SettingsPage from '../pages/SettingsPage'
+import TimerPage from '../pages/TimerPage'
 import { getSongs, postSong, patchSong, deleteSong } from '../services'
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
@@ -12,6 +12,9 @@ export default function App() {
   const [songs, setSongs] = useState([])
   const [playback, setPlayback] = useState('STOPPED')
   const [currentSong, setCurrentSong] = useState([])
+
+
+
 
   useEffect(() => {
     getSongs().then(setSongs)
@@ -38,6 +41,7 @@ export default function App() {
             exact
             path="/"
             render={() => (
+            
               <KidsPage
                 playback={playback}
                 setPlayback={setPlayback}
@@ -45,6 +49,7 @@ export default function App() {
                 setCurrentSong={setCurrentSong}
                 songs={songs}
               />
+             
             )}
           />
           <Route
@@ -59,7 +64,7 @@ export default function App() {
               />
             )}
           />
-          <Route path="/settingspage" render={() => <SettingsPage />} />
+          <Route path="/timerpage" render={() => <TimerPage />} />
         </Switch>
       </AppStyled>
     </Router>

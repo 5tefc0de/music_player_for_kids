@@ -24,13 +24,13 @@ export default function Navigation() {
       <KidsButtononNavigationStyled to="/" onClick={handleOnClick} />
       <Redirect to="/parentspage" />
       <ParentsButtononNavigationStyled />
-      <SettingsButtononNavigationStyled to="/settingspage" onClick={handleOnClick} />
+      <TimerButtononNavigationStyled to="/timerpage" onClick={handleOnClick} />
     </NavStyled>
   ) : (
     <NavStyled>
       <KidsButtononNavigationStyled to="/" />
       <ParentsButtononNavigationStyled onClick={testParentsPassword} />
-      <SettingsButtononNavigationStyled to="/settingspage" />
+      <TimerButtononNavigationStyled to="/timerpage" />
     </NavStyled>
   )
 }
@@ -53,7 +53,7 @@ const ParentsButtononNavigationStyled = styled.button`
   border-radius: 0.3rem;
 `
 
-const SettingsButtononNavigationStyled = styled(NavLink)`
+const TimerButtononNavigationStyled = styled(NavLink)`
   background: url(https://res.cloudinary.com/dtlbe2w6j/image/upload/v1571992705/cogs-solid_b4a9vp.svg)
     no-repeat center/2.1em #7edad4;
   border-radius: 0.3rem;

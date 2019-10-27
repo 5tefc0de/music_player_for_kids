@@ -3,6 +3,7 @@ import KidsPlayer from '../player/KidsPlayer'
 import styled from 'styled-components/macro'
 import KidsPlayList from '../playlists/KidsPlaylist'
 
+
 export default function KidsPage({
   currentSong,
   setCurrentSong,
@@ -25,6 +26,7 @@ export default function KidsPage({
           songs={songs}
           activePage={activePage}
         ></KidsPlayList>
+   
       </Kidsstyle>
     </>
   )
