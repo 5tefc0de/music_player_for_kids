@@ -3,12 +3,11 @@ import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 
 ParentsPlayList.propTypes = {
-  songs: PropTypes.array.isRequired,
-  onSongClick: PropTypes.func,
+  songs: PropTypes.array,
+  onSongClick: PropTypes.func
 }
 export default function ParentsPlayList({ songs, onSongClick }) {
   return (
-    
     <PlaylistonParentsPageStyled>
       {songs.map(song => (
         <PlaylistButtononParentsPage
@@ -26,44 +25,35 @@ export default function ParentsPlayList({ songs, onSongClick }) {
         </PlaylistButtononParentsPage>
       ))}
     </PlaylistonParentsPageStyled>
- 
   )
 }
-
-
-
-const PlaylistButtononParentsPage = styled.button`
-  display: flex;
-  background-color: ${props => (props.active ? '#ff9393' : 'lightgrey')};
-  width: 300px;
-  height: 55px;
-  border-radius: 0.9em;
-  font-size: 0.7em;
-  cursor: pointer;
-  color: black;
-  font-style: bold;
-  font-family: 'Arial';
-  margin-bottom: 0.5em;
-  align-items: center;
-  justify-content: left;
-  box-shadow: 1px 3px lightgray;
-  text-decoration: none;
-`
 
 const PlaylistonParentsPageStyled = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 90vw;
-  height: 85vh;
+  margin: 0.3rem;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
-
   overflow: scroll;
 `
+
+const PlaylistButtononParentsPage = styled.button`
+  display: flex;
+  background-color: ${props => (props.active ? '#ff9393' : 'lightgrey')};
+  width: 40em;
+  height: 4.5em;
+  border-radius: 0.9em;
+  font-size: 0.8em;
+  color: black;
+  font-style: bold;
+  margin-bottom: 0.6em;
+  align-items: center;
+  justify-content: left;
+  box-shadow: ${props =>
+    props.active ? '2px 2px 2px #ff9393' : '2px 2px 2px lightgrey'};
+`
 const InputOnParentsPlaylistStyled = styled.input`
-  width: 40px;
-  height: 40px;
+  width: 3.5em;
+  height: 3.5em;
   background-size: cover;
-  margin-right: 2.8em;
+  margin-right: 2.5em;
 `

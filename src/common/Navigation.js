@@ -1,14 +1,11 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
-import { ArrowLeft } from 'styled-icons/evil/ArrowLeft'
-import { ArrowRight } from 'styled-icons/evil/ArrowRight'
-
 import { Redirect, NavLink } from 'react-router-dom'
 
 export default function Navigation() {
   const [toParentspage, setToParentspage] = useState(false)
 
-  function testParentPassword() {
+  function testParentsPassword() {
     const password = '1234'
     const passwordFromInput = prompt('Passwords?')
     if (password === passwordFromInput) {
@@ -18,41 +15,22 @@ export default function Navigation() {
     }
   }
 
-function handleOnClick () {
-  setToParentspage(false)
-}
-console.log(toParentspage)
+  function handleOnClick() {
+    setToParentspage(false)
+  }
 
   return toParentspage ? (
     <NavStyled>
-      <KidsButtononNavigationStyled to="/" onClick={handleOnClick}>
-        <ArrowLeft size="15" /> Kids Player
-      </KidsButtononNavigationStyled>
-      <ParentsButtononNavigationStyled>
-      Player editieren
-      </ParentsButtononNavigationStyled>
-     
-        <Redirect to="/parentspage" />
-  
-
-      <SettingsButtononNavigationStyled to="/settingspage" onClick={handleOnClick}>
-        Einstellungen <ArrowRight size="15" />
-      </SettingsButtononNavigationStyled>
+      <KidsButtononNavigationStyled to="/" onClick={handleOnClick} />
+      <Redirect to="/parentspage" />
+      <ParentsButtononNavigationStyled />
+      <TimerButtononNavigationStyled to="/timerpage" onClick={handleOnClick} />
     </NavStyled>
   ) : (
     <NavStyled>
-      <KidsButtononNavigationStyled to="/" >
-      
-        <ArrowLeft size="15" /> Kids Player
-      </KidsButtononNavigationStyled>
-
-      <ParentsButtononNavigationStyled onClick={testParentPassword}>
-      Player editieren
-      </ParentsButtononNavigationStyled>
-
-      <SettingsButtononNavigationStyled to="/settingspage">
-        Einstellungen <ArrowRight size="15" />
-      </SettingsButtononNavigationStyled>
+      <KidsButtononNavigationStyled to="/" />
+      <ParentsButtononNavigationStyled onClick={testParentsPassword} />
+      <TimerButtononNavigationStyled to="/timerpage" />
     </NavStyled>
   )
 }
@@ -60,41 +38,23 @@ console.log(toParentspage)
 const NavStyled = styled.nav`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  font-family: 'Arial';
-  margin-left: 2em;
-  margin-top: 0.3em;
-  margin-right: 4.3em;
+  grid-gap: 0.2em;
+  margin: 0.3rem;
+  height: 48px;
 `
 const KidsButtononNavigationStyled = styled(NavLink)`
-  background-color: #7edad4;
-  border-radius: 0.3em;
-  font-size: 0.7em;
-  padding-left: 0;
-  font-family: 'Arial';
-  color: white;
-  cursor: pointer;
-  font-style: bold;
+  background: url(https://res.cloudinary.com/dtlbe2w6j/image/upload/v1571992078/child-solid_bhihq6.svg)
+    no-repeat center/1.5em #7edad4;
+  border-radius: 0.3rem;
 `
 const ParentsButtononNavigationStyled = styled.button`
-  background-color: #39968f;
-  border-radius: 0.3em;
-  font-size: 0.7em;
-  padding: 0;
-  font-family: 'Arial';
-  color: white;
-  cursor: pointer;
-  font-style: bold;
+  background: url(https://res.cloudinary.com/dtlbe2w6j/image/upload/v1571992835/expeditedssl-brands_slbqcd.svg)
+    no-repeat center/1.9em #7edad4;
+  border-radius: 0.3rem;
 `
 
-const SettingsButtononNavigationStyled = styled(NavLink)`
-  background-color: #7edad4;
-  border-radius: 0.3em;
-  font-size: 0.7em;
-  padding-right: 10px;
-  font-family: 'Arial';
-  color: white;
-  cursor: pointer;
-  padding: 0;
-  font-style: bold;
-  padding-left: 1px;
+const TimerButtononNavigationStyled = styled(NavLink)`
+  background: url(https://res.cloudinary.com/dtlbe2w6j/image/upload/v1571992705/cogs-solid_b4a9vp.svg)
+    no-repeat center/2.1em #7edad4;
+  border-radius: 0.3rem;
 `

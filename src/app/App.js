@@ -3,7 +3,7 @@ import styled from 'styled-components/macro'
 import KidsPage from '../pages/KidsPage'
 import ParentsPage from '../pages/ParentsPage'
 import Navigation from '../common/Navigation'
-import SettingsPage from '../pages/SettingsPage'
+import TimerPage from '../pages/TimerPage'
 import { getSongs, postSong, patchSong, deleteSong } from '../services'
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
@@ -12,6 +12,10 @@ export default function App() {
   const [songs, setSongs] = useState([])
   const [playback, setPlayback] = useState('STOPPED')
   const [currentSong, setCurrentSong] = useState([])
+
+  const [timerSeconds, setTimerSeconds] = useState(10)
+  const [timerIsActive, setTimerIsActive] = useState(false)
+  const [openModal, setOpenModal] = useState(false)
 
   useEffect(() => {
     getSongs().then(setSongs)
@@ -32,8 +36,7 @@ export default function App() {
   return (
     <Router>
       <AppStyled>
-        <Navigation ></Navigation>
-
+        <Navigation />
         <Switch>
           <Route
             exact
@@ -45,6 +48,8 @@ export default function App() {
                 currentSong={currentSong}
                 setCurrentSong={setCurrentSong}
                 songs={songs}
+                timerSeconds={timerSeconds}
+                timerIsActive={true}
               />
             )}
           />
@@ -60,7 +65,19 @@ export default function App() {
               />
             )}
           />
-          <Route path="/settingspage" render={() => <SettingsPage />} />
+          <Route
+            path="/timerpage"
+            render={() => (
+              <TimerPage
+                timerSeconds={timerSeconds}
+                setTimerSeconds={setTimerSeconds}
+                timerIsActive={timerIsActive}
+                setTimerIsActive={setTimerIsActive}
+                openModal={openModal}
+                setOpenModal={setOpenModal}
+              />
+            )}
+          />
         </Switch>
       </AppStyled>
     </Router>
@@ -69,12 +86,20 @@ export default function App() {
 
 const AppStyled = styled.div`
   display: grid;
-  grid-row-gap: 10px;
-  width: 100vw;
-  height: 100vh;
-  grid-template-rows: 40px auto;
+  grid-template-rows: min-content auto;
+  position: absolute;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
+
+  @media (min-width: 900px) {
+    width: 375px;
+    height: 667px;
+    border: 30px solid black;
+    border-width: 60px 20px;
+    border-radius: 20px;
+    box-shadow: 30px 40px 30px #2264;
+    margin: 40px auto;
+  }
 `

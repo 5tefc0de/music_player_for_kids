@@ -2,7 +2,8 @@
   "short_name": "Music Player",
   "name": "MusicPlayer for Kids",
   "start_url": ".",
-  "display": "standalone",
+  "display": "fullscreen",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "orientation": "portrait"
 }

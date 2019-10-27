@@ -2,6 +2,8 @@ import React from 'react'
 import KidsPlayer from '../player/KidsPlayer'
 import styled from 'styled-components/macro'
 import KidsPlayList from '../playlists/KidsPlaylist'
+import Slider from 'react-input-slider'
+
 
 export default function KidsPage({
   currentSong,
@@ -9,11 +11,14 @@ export default function KidsPage({
   songs,
   setPlayback,
   activePage,
-  setImageInPlaylist
+  setImageInPlaylist,
+  timerSeconds,
+  timerIsActive
 }) {
   return (
     <>
       <Kidsstyle>
+
         <KidsPlayer
           currentSong={currentSong}
           playback={'PLAYING'}
@@ -25,6 +30,8 @@ export default function KidsPage({
           songs={songs}
           activePage={activePage}
         ></KidsPlayList>
+         <Slider axis="x" x={timerSeconds} xmax="1800" disabled="true" />
+
       </Kidsstyle>
     </>
   )
@@ -37,6 +44,7 @@ const Kidsstyle = styled.section`
   flex-direction: column;
   background: url(https://res.cloudinary.com/dtlbe2w6j/image/upload/v1571218638/Bildschirmfoto_2019-10-16_um_11.36.43_euoxbj.png)
     no-repeat;
-  width: 100vw;
+  width: 100%;
+  
   margin: 0 auto;
 `
