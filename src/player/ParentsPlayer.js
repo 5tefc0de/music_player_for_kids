@@ -55,7 +55,7 @@ export default function ParentsPlayer({
       )}
       {playback === 'PLAYING' && (
         <PlayerButtonStyled onClick={handlePause}>
-          <Pause size="120" />
+          <Pause size="20" />
         </PlayerButtonStyled>
       )}
       {playback === 'PAUSE' && (

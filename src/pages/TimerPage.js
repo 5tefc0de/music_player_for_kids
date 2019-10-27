@@ -3,11 +3,14 @@ import styled from 'styled-components/macro'
 import Modal from 'react-responsive-modal'
 import Slider from 'react-input-slider'
 
-export default function TimerPage() {
-  const [timerSeconds, setTimerSeconds] = useState(10)
-  const [timerIsActive, setTimerIsActive] = useState(false)
-  const [openModal, setOpenModal] = useState(false)
-
+export default function TimerPage({
+  timerSeconds,
+  setTimerSeconds,
+  timerIsActive,
+  setTimerIsActive,
+  openModal,
+  setOpenModal
+}) {
   function toggle() {
     setTimerIsActive(!timerIsActive)
   }
@@ -52,16 +55,18 @@ export default function TimerPage() {
         <H3styled>Maximale Spielzeit </H3styled>
 
         <Slidertyled axis="x" x={timerSeconds} xmax="1800" disabled="true" />
-        
-          <TimerOutputStyled>{timeOutput}</TimerOutputStyled>
-          <TimerBox>
+
+        <TimerOutputStyled>{timeOutput}</TimerOutputStyled>
+        <TimerBox>
           <TimerButton onClick={toggle}>
             {timerIsActive ? 'Pause' : 'Start'}
           </TimerButton>
           <TimerButton onClick={reset}>Reset</TimerButton>
         </TimerBox>
         <SetTimeButtonsBox>
-          <SetTimeButton onClick={() => setTimerSeconds(60)}>1 Minute</SetTimeButton>
+          <SetTimeButton onClick={() => setTimerSeconds(60)}>
+            1 Minute
+          </SetTimeButton>
           <SetTimeButton onClick={() => setTimerSeconds(300)}>
             5 Minuten
           </SetTimeButton>
@@ -91,7 +96,7 @@ export default function TimerPage() {
 }
 
 const H3styled = styled.h3`
-font-size: 1.5em;
+  font-size: 1.5em;
 `
 
 const TimerStyled = styled.div`
@@ -135,6 +140,6 @@ const TimerBox = styled.div`
   margin-top: 1.5em;
 `
 const Slidertyled = styled(Slider)`
-margin-top: 1em;
-margin-bottom: 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
 `

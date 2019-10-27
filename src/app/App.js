@@ -13,8 +13,9 @@ export default function App() {
   const [playback, setPlayback] = useState('STOPPED')
   const [currentSong, setCurrentSong] = useState([])
 
-
-
+  const [timerSeconds, setTimerSeconds] = useState(10)
+  const [timerIsActive, setTimerIsActive] = useState(false)
+  const [openModal, setOpenModal] = useState(false)
 
   useEffect(() => {
     getSongs().then(setSongs)
@@ -41,15 +42,15 @@ export default function App() {
             exact
             path="/"
             render={() => (
-            
               <KidsPage
                 playback={playback}
                 setPlayback={setPlayback}
                 currentSong={currentSong}
                 setCurrentSong={setCurrentSong}
                 songs={songs}
+                timerSeconds={timerSeconds}
+                timerIsActive={true}
               />
-             
             )}
           />
           <Route
@@ -64,7 +65,19 @@ export default function App() {
               />
             )}
           />
-          <Route path="/timerpage" render={() => <TimerPage />} />
+          <Route
+            path="/timerpage"
+            render={() => (
+              <TimerPage
+                timerSeconds={timerSeconds}
+                setTimerSeconds={setTimerSeconds}
+                timerIsActive={timerIsActive}
+                setTimerIsActive={setTimerIsActive}
+                openModal={openModal}
+                setOpenModal={setOpenModal}
+              />
+            )}
+          />
         </Switch>
       </AppStyled>
     </Router>
@@ -81,14 +94,12 @@ const AppStyled = styled.div`
   bottom: 0;
 
   @media (min-width: 900px) {
-     width: 375px;
-     height: 667px;
-     border: 30px solid black;
-     border-width: 60px 20px;
-     border-radius: 20px;
-     box-shadow: 30px 40px 30px #2264;
-     margin: 40px auto;
-   }
-
-
+    width: 375px;
+    height: 667px;
+    border: 30px solid black;
+    border-width: 60px 20px;
+    border-radius: 20px;
+    box-shadow: 30px 40px 30px #2264;
+    margin: 40px auto;
+  }
 `
