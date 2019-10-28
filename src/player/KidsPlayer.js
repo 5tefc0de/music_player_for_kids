@@ -4,14 +4,17 @@ import PropTypes from 'prop-types'
 
 KidsPlayer.propTypes = {
   currentSong: PropTypes.array,
-  playback: PropTypes.string,
+  playback: PropTypes.string
 }
 
-export default function KidsPlayer({ currentSong, playback }) {
-  return (
+export default function KidsPlayer({ currentSong, playback, openModal }) {
+  return openModal ? (
     <div>
-      {playback && <Sound url={currentSong.url} playStatus={playback} loop />}
+      {playback && <Sound url={currentSong.url} playStatus={'STOPPED'} loop />}
+    </div>
+  ) : (
+    <div>
+      {playback && <Sound url={currentSong.url} playStatus={'PLAYING'} loop />}
     </div>
   )
 }
-

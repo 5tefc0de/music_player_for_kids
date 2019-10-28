@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 KidsPlayList.propTypes = {
   setCurrentSong: PropTypes.func,
-  songs: PropTypes.array.isRequired,
+  songs: PropTypes.array.isRequired
 }
 export default function KidsPlayList({ setCurrentSong, songs }) {
   const [activeItemIndex, setActiveItemIndex] = useState(0)
@@ -39,7 +39,6 @@ export default function KidsPlayList({ setCurrentSong, songs }) {
     </PlaylistStyled>
   )
 }
-
 
 const PlaylistStyled = styled.div`
   width: 20em;

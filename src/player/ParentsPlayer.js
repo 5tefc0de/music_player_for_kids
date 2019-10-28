@@ -12,12 +12,7 @@ ParentsPlayer.propTypes = {
   setPlaybak: PropTypes.func
 }
 
-
-export default function ParentsPlayer({
-  currentSong,
-  playback,
-  setPlayback,
-}) {
+export default function ParentsPlayer({ currentSong, playback, setPlayback }) {
   const [position, setPosition] = useState('0:00')
   const [duration, setDuration] = useState('0:00')
 
@@ -69,8 +64,9 @@ export default function ParentsPlayer({
       <PlayerButtonStyled>
         {position} / {duration}
       </PlayerButtonStyled>
-      {currentSong.title && <PlayerButtonStyled>{currentSong.title}</PlayerButtonStyled>}
-      
+      {currentSong.title && (
+        <PlayerButtonStyled>{currentSong.title}</PlayerButtonStyled>
+      )}
 
       {playback && (
         <Sound

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components/macro'
 import Modal from 'react-responsive-modal'
 import TimerSlider from '../timer/TimerSlider'
-import {WinkSmile} from 'styled-icons/boxicons-solid/WinkSmile'
+import { WinkSmile } from 'styled-icons/boxicons-solid/WinkSmile'
 
 export default function TimerPage({
   timerSeconds,
@@ -27,8 +27,6 @@ export default function TimerPage({
       reset()
     }
   }
-
-
 
   useEffect(() => {
     onNull()
@@ -84,7 +82,7 @@ export default function TimerPage({
       </TimerStyled>
       {openModal && (
         <Modal open={openModal} onClose={() => setOpenModal(false)} center>
-        <SmileStyled size="300" />
+          <SmileStyled size="300" />
         </Modal>
       )}
     </>
@@ -136,6 +134,5 @@ const TimerBox = styled.div`
   margin-top: 1.5em;
 `
 const SmileStyled = styled(WinkSmile)`
-color: black;
-
+  color: black;
 `

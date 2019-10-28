@@ -14,10 +14,7 @@ export default createGlobalStyle`
     background: #eee;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
-    overflow: hidden;
-  
-
-  
+    overflow: hidden;  
   }
 
   input, button, textarea {

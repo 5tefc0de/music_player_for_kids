@@ -2,9 +2,7 @@ import React from 'react'
 import KidsPlayer from '../player/KidsPlayer'
 import styled from 'styled-components/macro'
 import KidsPlayList from '../playlists/KidsPlaylist'
-import TimerSlider from '../timer/TimerSlider'
-
-
+import TimerOnKidspage from '../timer/TimerOnKidspage'
 
 export default function KidsPage({
   currentSong,
@@ -14,29 +12,41 @@ export default function KidsPage({
   activePage,
   setImageInPlaylist,
   timerSeconds,
-  timerIsActive
+  timerIsActive,
+  setTimerSeconds,
+  setTimerIsActive,
+  openModal,
+  setOpenModal,
+  playback
 }) {
-
-console.log(timerSeconds)
-  
-
   return (
     <>
       <Kidsstyle>
-
         <KidsPlayer
           currentSong={currentSong}
           playback={'PLAYING'}
           activePage={activePage}
+          openModal={openModal}
         ></KidsPlayer>
+
         <KidsPlayList
           setImageInPlaylist={setImageInPlaylist}
           setCurrentSong={setCurrentSong}
           songs={songs}
           activePage={activePage}
         ></KidsPlayList>
-        <TimerSlider x={timerSeconds} xmax="1800" disabled="true" />
 
+        <TimerOnKidspage
+          timerSeconds={timerSeconds}
+          setTimerSeconds={setTimerSeconds}
+          timerIsActive={timerIsActive}
+          setTimerIsActive={setTimerIsActive}
+          openModal={openModal}
+          setOpenModal={setOpenModal}
+          playback={playback}
+          currentSong={currentSong}
+          setPlayback={setPlayback}
+        ></TimerOnKidspage>
       </Kidsstyle>
     </>
   )

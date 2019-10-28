@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import { Redirect, NavLink } from 'react-router-dom'
 
-export default function Navigation() 
-{
+export default function Navigation() {
   const [toParentspage, setToParentspage] = useState(false)
   const [timerIsActive, setTimerIsActive] = useState(false)
 
@@ -16,8 +15,6 @@ export default function Navigation()
       setToParentspage(false)
     }
   }
-
-
 
   function handleOnClickOnKidsPage() {
     setToParentspage(false)
@@ -65,7 +62,6 @@ const ParentsButtononNavigationStyled = styled.button`
     no-repeat center/1.9em #7edad4;
   border-radius: 0.3rem;
 `
-
 const TimerButtononNavigationStyled = styled(NavLink)`
   background: url(https://res.cloudinary.com/dtlbe2w6j/image/upload/v1571992705/cogs-solid_b4a9vp.svg)
     no-repeat center/2.1em #7edad4;
