@@ -34,10 +34,7 @@ export default function App() {
   return (
     <Router>
       <AppStyled>
-        <Navigation
-          timerSeconds={timerSeconds}
-          setTimerSeconds={setTimerSeconds}
-        />
+        <Navigation/>
         <Switch>
           <Route
             exact

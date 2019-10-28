@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components/macro'
-import Modal from 'react-responsive-modal'
-import TimerSlider from '../timer/TimerSlider'
-import { WinkSmile } from 'styled-icons/boxicons-solid/WinkSmile'
+import TimerOnKidspage from '../timer/TimerOnKidspage'
 
 export default function TimerPage({
   timerSeconds,
@@ -17,45 +15,22 @@ export default function TimerPage({
   }
 
   function reset() {
-    setTimerSeconds(10)
     setTimerIsActive(false)
+    setTimerSeconds(10)
   }
-
-  function onNull() {
-    if (timerSeconds === 0) {
-      setOpenModal(true)
-      reset()
-    }
-  }
-
-  useEffect(() => {
-    onNull()
-  }, [timerSeconds])
-
-  useEffect(() => {
-    let interval = null
-    if (timerIsActive) {
-      interval = setInterval(() => {
-        setTimerSeconds(timerSeconds => timerSeconds - 1)
-      }, 1000)
-    } else if (!timerIsActive && timerSeconds !== 0) {
-      clearInterval(interval)
-    }
-    return () => clearInterval(interval)
-  }, [timerIsActive, timerSeconds])
-
-  const secondsMinSec = timerSeconds,
-    secMin = Math.floor((secondsMinSec / 60) << 0),
-    secSec = Math.floor(secondsMinSec % 60)
-
-  const timeOutput = secMin + ':' + ('0' + secSec).slice(-2)
 
   return (
     <>
       <TimerStyled>
         <H3styled>Maximale Spielzeit </H3styled>
-        <TimerSlider timerSeconds={timerSeconds}></TimerSlider>
-        <TimerOutputStyled>{timeOutput}</TimerOutputStyled>
+        <TimerOnKidspage
+          timerSeconds={timerSeconds}
+          setTimerSeconds={setTimerSeconds}
+          timerIsActive={timerIsActive}
+          setTimerIsActive={setTimerIsActive}
+          openModal={openModal}
+          setOpenModal={setOpenModal}
+        ></TimerOnKidspage>
         <TimerBox>
           <TimerButton onClick={toggle}>
             {timerIsActive ? 'Pause' : 'Start'}
@@ -80,11 +55,6 @@ export default function TimerPage({
           </SetTimeButton>
         </SetTimeButtonsBox>
       </TimerStyled>
-      {openModal && (
-        <Modal open={openModal} onClose={() => setOpenModal(false)} center>
-          <SmileStyled size="300" />
-        </Modal>
-      )}
     </>
   )
 }
@@ -92,7 +62,6 @@ export default function TimerPage({
 const H3styled = styled.h3`
   font-size: 1.5em;
 `
-
 const TimerStyled = styled.div`
   text-align: center;
   min-height: 100%;
@@ -127,12 +96,6 @@ const TimerButton = styled.button`
   margin: 0.25em;
   color: black;
 `
-const TimerOutputStyled = styled.div`
-  font-size: 1.4em;
-`
 const TimerBox = styled.div`
   margin-top: 1.5em;
-`
-const SmileStyled = styled(WinkSmile)`
-  color: black;
 `
