@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import { Redirect, NavLink } from 'react-router-dom'
 
-export default function Navigation() {
+export default function Navigation() 
+{
   const [toParentspage, setToParentspage] = useState(false)
+  const [timerIsActive, setTimerIsActive] = useState(false)
 
   function testParentsPassword() {
     const password = '1234'
@@ -15,16 +17,27 @@ export default function Navigation() {
     }
   }
 
-  function handleOnClick() {
+
+
+  function handleOnClickOnKidsPage() {
     setToParentspage(false)
+    setTimerIsActive(timerIsActive)
+  }
+
+  function handleOnClickOnTimerPage() {
+    setToParentspage(false)
+    setTimerIsActive(!timerIsActive)
   }
 
   return toParentspage ? (
     <NavStyled>
-      <KidsButtononNavigationStyled to="/" onClick={handleOnClick} />
+      <KidsButtononNavigationStyled to="/" onClick={handleOnClickOnKidsPage} />
       <Redirect to="/parentspage" />
       <ParentsButtononNavigationStyled />
-      <TimerButtononNavigationStyled to="/timerpage" onClick={handleOnClick} />
+      <TimerButtononNavigationStyled
+        to="/timerpage"
+        onClick={handleOnClickOnTimerPage}
+      />
     </NavStyled>
   ) : (
     <NavStyled>
