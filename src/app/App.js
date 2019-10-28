@@ -4,7 +4,7 @@ import KidsPage from '../pages/KidsPage'
 import ParentsPage from '../pages/ParentsPage'
 import Navigation from '../common/Navigation'
 import TimerPage from '../pages/TimerPage'
-import { getSongs, postSong, patchSong, deleteSong } from '../services'
+import { getSongs, patchSong} from '../services'
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
@@ -33,10 +33,15 @@ export default function App() {
     })
   }
 
+
   return (
     <Router>
       <AppStyled>
-        <Navigation />
+        <Navigation
+       
+          timerSeconds={timerSeconds}
+          setTimerSeconds={setTimerSeconds}
+        />
         <Switch>
           <Route
             exact

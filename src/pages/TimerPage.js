@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components/macro'
 import Modal from 'react-responsive-modal'
-import Slider from 'react-input-slider'
+import TimerSlider from '../timer/TimerSlider'
+import {WinkSmile} from 'styled-icons/boxicons-solid/WinkSmile'
 
 export default function TimerPage({
   timerSeconds,
@@ -26,6 +27,8 @@ export default function TimerPage({
       reset()
     }
   }
+
+
 
   useEffect(() => {
     onNull()
@@ -53,9 +56,7 @@ export default function TimerPage({
     <>
       <TimerStyled>
         <H3styled>Maximale Spielzeit </H3styled>
-
-        <Slidertyled axis="x" x={timerSeconds} xmax="1800" disabled="true" />
-
+        <TimerSlider timerSeconds={timerSeconds}></TimerSlider>
         <TimerOutputStyled>{timeOutput}</TimerOutputStyled>
         <TimerBox>
           <TimerButton onClick={toggle}>
@@ -83,12 +84,7 @@ export default function TimerPage({
       </TimerStyled>
       {openModal && (
         <Modal open={openModal} onClose={() => setOpenModal(false)} center>
-          <h2>Simple centered modal</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-            pulvinar risus non risus hendrerit venenatis. Pellentesque sit amet
-            hendrerit risus, sed porttitor quam.
-          </p>
+        <SmileStyled size="300" />
         </Modal>
       )}
     </>
@@ -139,7 +135,7 @@ const TimerOutputStyled = styled.div`
 const TimerBox = styled.div`
   margin-top: 1.5em;
 `
-const Slidertyled = styled(Slider)`
-  margin-top: 1em;
-  margin-bottom: 1em;
+const SmileStyled = styled(WinkSmile)`
+color: black;
+
 `
