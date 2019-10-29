@@ -1,5 +1,5 @@
 # PlayTime
-This is me first coding projekt  during the [neuefische](https://www.neuefische.de/) web developer bootcamp in fall 2019.
+This is my first coding project during the [neuefische](https://www.neuefische.de/) web developer bootcamp in fall 2019.
 
 The app PlayTime is a music player for kids, who can´t read. They can click on a picture to play a song. On an editing page, parents can setup a playlist. 
 
