@@ -24,7 +24,7 @@ export default function KidsPage({
       <Kidsstyle>
         <KidsPlayer
           currentSong={currentSong}
-          playback={'PLAYING'}
+          playback={'STOPPED'}
           activePage={activePage}
           openModal={openModal}
         ></KidsPlayer>

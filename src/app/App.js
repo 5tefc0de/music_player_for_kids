@@ -34,7 +34,7 @@ export default function App() {
   return (
     <Router>
       <AppStyled>
-        <Navigation/>
+        <Navigation />
         <Switch>
           <Route
             exact

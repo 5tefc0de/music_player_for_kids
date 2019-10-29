@@ -6,11 +6,13 @@ import { Pause } from 'styled-icons/boxicons-regular/Pause'
 import { Stop } from 'styled-icons/boxicons-regular/Stop'
 import PropTypes from 'prop-types'
 
+
 ParentsPlayer.propTypes = {
   currentSong: PropTypes.array,
   playback: PropTypes.string.isRequired,
   setPlaybak: PropTypes.func
 }
+
 
 export default function ParentsPlayer({ currentSong, playback, setPlayback }) {
   const [position, setPosition] = useState('0:00')

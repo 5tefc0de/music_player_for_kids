@@ -7,7 +7,7 @@ export default function Navigation() {
 
   function testParentsPassword() {
     const password = '1234'
-    const passwordFromInput = prompt('Passwords?')
+    const passwordFromInput = prompt('Passwort?')
     if (password === passwordFromInput) {
       setToParentspage(true)
     } else {
@@ -17,7 +17,6 @@ export default function Navigation() {
 
   function handleOnClick() {
     setToParentspage(false)
-
   }
 
   return toParentspage ? (
@@ -57,7 +56,7 @@ const ParentsButtononNavigationStyled = styled.button`
   border-radius: 0.3rem;
 `
 const TimerButtononNavigationStyled = styled(NavLink)`
-  background: url(https://res.cloudinary.com/dtlbe2w6j/image/upload/v1571992705/cogs-solid_b4a9vp.svg)
+  background: url(https://res.cloudinary.com/dtlbe2w6j/image/upload/v1572275866/clock-solid_s1q0ry.svg)
     no-repeat center/2.1em #7edad4;
   border-radius: 0.3rem;
 `
