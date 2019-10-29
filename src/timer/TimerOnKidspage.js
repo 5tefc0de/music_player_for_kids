@@ -30,7 +30,7 @@ export default function TimerOnKidspage({
 
   useEffect(() => {
     let interval = null
-    if (timerIsActive) {
+    if (timerIsActive) {  //true, wenn aud PLAY gedrückt wird
       interval = setInterval(() => {
         setTimerSeconds(timerSeconds => timerSeconds - 1)
       }, 1000)
@@ -55,7 +55,7 @@ export default function TimerOnKidspage({
 
       {openModal && (
         <>
-          <Modal open={openModal} center>
+          <Modal open={openModal} onClose={() => setOpenModal(false)} center>
             <SmileStyled size="300" />
           </Modal>
         </>
