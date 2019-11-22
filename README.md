@@ -9,6 +9,7 @@ The app PlayTime is a music player for kids, who can´t read. They can click on 
 - [Create React App](https://github.com/facebook/create-react-app)
 - [MongoDB](https://www.npmjs.com/package/mongodb)
 
+![App Demo](stefan_muhle_playtime.gif)
 
 ## Additional dependencies
 
