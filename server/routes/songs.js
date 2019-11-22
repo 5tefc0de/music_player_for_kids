@@ -13,6 +13,13 @@ router.get('/:id', (req, res) => {
     .catch(err => res.json(err))
 })
 
+router.post('/', (req, res) => {
+  Song.create(req.body)
+    .then(songs => res.json(songs))
+    .catch(err => res.json(err))
+})
+
+
 router.patch('/:id', (req, res) => {
   Song.findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then(song => res.json(song))
