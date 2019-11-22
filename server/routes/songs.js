@@ -7,17 +7,19 @@ router.get('/', (req, res) => {
     .catch(err => res.json(err))
 })
 
+router.post('/', (req, res) => {
+  Song.create(req.body)
+    .then(songs => res.json(songs))
+    .catch(err => res.json(err))
+})
+
 router.get('/:id', (req, res) => {
   Song.find({ id: req.params.id })
     .then(songs => res.json(songs))
     .catch(err => res.json(err))
 })
 
-router.post('/', (req, res) => {
-  Song.create(req.body)
-    .then(songs => res.json(songs))
-    .catch(err => res.json(err))
-})
+
 
 
 router.patch('/:id', (req, res) => {
